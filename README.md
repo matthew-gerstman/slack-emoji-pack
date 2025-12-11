@@ -1,74 +1,50 @@
-# Slack Emoji Pack
+# Slack Emoji Pack 🎨
 
-A curated collection of 55 animated GIFs organized into 11 thematic categories for Slack workspaces.
+A curated collection of 36 reaction GIFs for your Slack workspace, organized into 8 categories.
 
-## 📦 What's Inside
+## Categories
 
-**55 Total Emojis across 11 Categories:**
+| Category | Count | Examples |
+|----------|-------|----------|
+| 🏃 Roadrunner Running Fast | 3 | `:roadrunner-running:`, `:roadrunner-speed:` |
+| 🏜️ Wile E Coyote | 2 | `:wile-e-falling:`, `:wile-e-train:` |
+| 🧠 Think Smart | 3 | `:think-smart:`, `:cat-thinking:`, `:smarty:` |
+| 🙄 Eye Roll Collection | 11 | `:jessica-jones-eye-roll:`, `:judge-judy-eye-roll:` |
+| 😳 What The Fuck | 5 | `:wtf:`, `:ryan-reynolds-wtf:` |
+| ❓ Why? | 4 | `:why-are-you-gay:`, `:confused-cat:` |
+| 💪 You Can Do Better | 3 | `:do-better:`, `:try-again:` |
+| 👌 Ok. | 5 | `:jlaw-thumbs-up:`, `:jonah-hill-ok:` |
 
-1. 🏃 **Roadrunner Running Fast** (3 emojis)
-2. 🏜️ **Roadrunner Chasing Wile E Coyote** (2 emojis)
-3. 🧠 **Think Smart** (3 emojis)
-4. 🙄 **Eye Roll Collection** (11 emojis)
-5. 😳 **What The Fuck** (5 emojis)
-6. ❓ **Why?** (4 emojis)
-7. 💪 **You Can Do Better** (3 emojis)
-8. 👌 **Ok.** (5 emojis)
-9. 🤷 **I Don't Hate It** (1 emoji)
-10. 🎉 **This Is Great** (8 emojis - includes Taylor Swift reactions)
-11. 🚫 **Can We Not** (4 emojis)
+## Preview
 
-## 🚀 Quick Start
+Open `index.html` in your browser to see all emojis with a dark mode preview.
 
-### View the Pack
+Or visit the GitHub Pages site: https://matthew-gerstman.github.io/slack-emoji-pack/
 
-Open `index.html` in your browser to preview all emojis with their suggested Slack names.
+## Installation
 
-### Add to Slack
+### Option 1: Import individually
+1. Go to your Slack workspace settings → Customize → Emoji
+2. Click "Add Custom Emoji"
+3. Upload GIFs from the `gifs/` folder
+4. Use the suggested names (e.g., `wtf`, `think-smart`)
 
-1. Go to your Slack workspace settings
-2. Navigate to **Customize** → **Emoji**
-3. Click **Add Custom Emoji**
-4. Upload the GIF files from this repository
-5. Use the suggested emoji names (shown in the preview)
+### Option 2: Bulk import (Slack Enterprise)
+Use Slack's bulk emoji import feature with the files in `gifs/`
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 slack-emoji-pack/
-├── index.html              # Preview page with all emojis
-├── taylor_surprised.gif    # Taylor Swift surprised reaction
-├── taylor_applause.gif     # Taylor Swift applause reaction
-├── taylor_happy.gif        # Taylor Swift happy reaction
-├── taylor_confetti.gif     # Taylor Swift confetti reaction
-└── README.md              # This file
+├── index.html          # Dark mode preview page
+├── gifs/               # All 36 GIF files
+│   ├── cat-thinking.gif
+│   ├── confused-cat.gif
+│   ├── ...
+│   └── wtf.gif
+└── README.md           # This file
 ```
 
-## 🎨 Features
+## License
 
-- **Dark mode design** - Matches modern Slack aesthetic
-- **Large previews** - 160px GIF displays for easy viewing
-- **Organized categories** - Emojis grouped by use case
-- **Suggested names** - Copy-paste ready emoji names in `:format:`
-
-## 📝 Emoji Naming Convention
-
-All emoji names follow Slack's format: `:emoji-name:`
-
-Examples:
-- `:roadrunner-running:`
-- `:wtf-mind-blown:`
-- `:taylor-surprised:`
-- `:can-we-not:`
-
-## 🤝 Contributing
-
-Feel free to suggest additional emojis or categories by opening an issue or pull request.
-
-## 📄 License
-
-This collection is for personal and team use. Individual GIFs are sourced from Giphy and retain their original licensing.
-
----
-
-**Made with ❤️ for better Slack reactions**
+GIFs sourced from Giphy. For personal/team use only.

@@ -14,91 +14,86 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #0a0a0a;
-            color: #e5e5e5;
             padding: 40px 20px;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         h1 {
             text-align: center;
             color: #ffffff;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .subtitle {
             text-align: center;
-            color: #888;
-            font-size: 1em;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2em;
             margin-bottom: 40px;
         }
         
         .category {
             background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .category-title {
-            font-size: 1.4em;
-            color: #ffffff;
+            font-size: 1.8em;
+            color: #8b9eff;
             margin-bottom: 20px;
-            font-weight: 600;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #8b9eff;
         }
         
         .emoji-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
         }
         
         .emoji-card {
-            background: #151515;
-            border: 1px solid #2a2a2a;
+            background: #2a2a2a;
             border-radius: 8px;
-            padding: 16px;
+            padding: 15px;
             text-align: center;
-            transition: all 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
         }
         
         .emoji-card:hover {
-            background: #1f1f1f;
-            border-color: #3a3a3a;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .emoji-image {
-            width: 160px;
-            height: 160px;
+            width: 128px;
+            height: 128px;
             object-fit: contain;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .emoji-name {
-            font-weight: 500;
-            color: #888;
+            font-weight: 600;
+            color: #e0e0e0;
             font-size: 0.85em;
             word-break: break-word;
-            font-family: 'Monaco', 'Courier New', monospace;
         }
         
         .stats {
             background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
@@ -111,31 +106,30 @@
         
         .stat-number {
             font-size: 2.5em;
-            font-weight: 600;
-            color: #ffffff;
+            font-weight: bold;
+            color: #8b9eff;
         }
         
         .stat-label {
-            color: #888;
-            font-size: 0.85em;
+            color: #aaa;
+            font-size: 0.9em;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Slack Emoji Pack</h1>
+        <h1>🎨 Slack Emoji Pack</h1>
         <p class="subtitle">A curated collection of GIFs for your Slack workspace</p>
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-number">55</div>
+                <div class="stat-number">42</div>
                 <div class="stat-label">Total Emojis</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">11</div>
+                <div class="stat-number">8</div>
                 <div class="stat-label">Categories</div>
             </div>
         </div>
@@ -144,15 +138,15 @@
             <h2 class="category-title">🏃 Roadrunner Running Fast</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/femafQ2CgVk56APYX5/giphy-downsized.gif" alt="roadrunner-running-1" class="emoji-image">
+                    <img src="gifs/roadrunner-running.gif" alt="roadrunner-running" class="emoji-image">
                     <div class="emoji-name">:roadrunner-running:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/2dbnhlCH2JhwdI2gHp/giphy.gif" alt="roadrunner-speed" class="emoji-image">
+                    <img src="gifs/roadrunner-speed.gif" alt="roadrunner-speed" class="emoji-image">
                     <div class="emoji-name">:roadrunner-speed:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/FEAngqNOOfnMGOzOTk/giphy-downsized.gif" alt="roadrunner-sad" class="emoji-image">
+                    <img src="gifs/roadrunner-sad.gif" alt="roadrunner-sad" class="emoji-image">
                     <div class="emoji-name">:roadrunner-sad:</div>
                 </div>
             </div>
@@ -162,11 +156,11 @@
             <h2 class="category-title">🏜️ Roadrunner Chasing Wile E Coyote</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/3o6ozAXbBKwCJvbdq8/giphy.gif" alt="chase-scene" class="emoji-image">
+                    <img src="gifs/wile-e-falling.gif" alt="wile-e-falling" class="emoji-image">
                     <div class="emoji-name">:wile-e-falling:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/K88pemIqP0oMg/giphy-downsized.gif" alt="train-chase" class="emoji-image">
+                    <img src="gifs/wile-e-train.gif" alt="wile-e-train" class="emoji-image">
                     <div class="emoji-name">:wile-e-train:</div>
                 </div>
             </div>
@@ -176,15 +170,15 @@
             <h2 class="category-title">🧠 Think Smart</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/9zMrydRBc7VqTbbZWo/giphy.gif" alt="think-smart" class="emoji-image">
+                    <img src="gifs/think-smart.gif" alt="think-smart" class="emoji-image">
                     <div class="emoji-name">:think-smart:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/gIkkXOHdR5QkgBsFGH/giphy.gif" alt="cat-thinking" class="emoji-image">
+                    <img src="gifs/cat-thinking.gif" alt="cat-thinking" class="emoji-image">
                     <div class="emoji-name">:cat-thinking:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/VIJxPwIvOsmL4XTikd/giphy-downsized.gif" alt="smarty" class="emoji-image">
+                    <img src="gifs/smarty.gif" alt="smarty" class="emoji-image">
                     <div class="emoji-name">:smarty:</div>
                 </div>
             </div>
@@ -194,47 +188,47 @@
             <h2 class="category-title">🙄 Eye Roll Collection</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/3i3kAa3tgxF5e/giphy.gif" alt="jessica-jones-eye-roll" class="emoji-image">
+                    <img src="gifs/jessica-jones-eye-roll.gif" alt="jessica-jones-eye-roll" class="emoji-image">
                     <div class="emoji-name">:jessica-jones-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/B4ORVnBvJCVvq/giphy.gif" alt="girl-eye-roll" class="emoji-image">
+                    <img src="gifs/girl-eye-roll.gif" alt="girl-eye-roll" class="emoji-image">
                     <div class="emoji-name">:girl-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/qmfpjpAT2fJRK/giphy.gif" alt="iron-man-eye-roll" class="emoji-image">
+                    <img src="gifs/iron-man-eye-roll.gif" alt="iron-man-eye-roll" class="emoji-image">
                     <div class="emoji-name">:iron-man-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/dEdmW17JnZhiU/giphy.gif" alt="office-eye-roll" class="emoji-image">
+                    <img src="gifs/office-eye-roll.gif" alt="office-eye-roll" class="emoji-image">
                     <div class="emoji-name">:office-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/eUrE2DuMKOE0g/giphy.gif" alt="jt-eye-roll" class="emoji-image">
+                    <img src="gifs/jt-eye-roll.gif" alt="jt-eye-roll" class="emoji-image">
                     <div class="emoji-name">:jt-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/3fYHfzJX9T4Yy7sAVa/giphy.gif" alt="whatever-eye-roll" class="emoji-image">
+                    <img src="gifs/whatever-eye-roll.gif" alt="whatever-eye-roll" class="emoji-image">
                     <div class="emoji-name">:whatever-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/Rhhr8D5mKSX7O/giphy.gif" alt="judge-judy-eye-roll" class="emoji-image">
+                    <img src="gifs/judge-judy-eye-roll.gif" alt="judge-judy-eye-roll" class="emoji-image">
                     <div class="emoji-name">:judge-judy-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/l3q2uvcxdk1pDLzGM/giphy-downsized.gif" alt="schitts-creek-eye-roll" class="emoji-image">
+                    <img src="gifs/schitts-creek-eye-roll.gif" alt="schitts-creek-eye-roll" class="emoji-image">
                     <div class="emoji-name">:schitts-creek-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/3oAt2dA6LxMkRrGc0g/giphy-downsized.gif" alt="nba-eye-roll" class="emoji-image">
+                    <img src="gifs/nba-eye-roll.gif" alt="nba-eye-roll" class="emoji-image">
                     <div class="emoji-name">:nba-eye-roll:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/3oFzm25c9cyPt1TYDC/giphy.gif" alt="give-me-a-break-eye-roll" class="emoji-image">
+                    <img src="gifs/give-me-a-break.gif" alt="give-me-a-break" class="emoji-image">
                     <div class="emoji-name">:give-me-a-break:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/b3aA1UkFdfaM0/giphy.gif" alt="lion-king-eye-roll" class="emoji-image">
+                    <img src="gifs/lion-king-eye-roll.gif" alt="lion-king-eye-roll" class="emoji-image">
                     <div class="emoji-name">:lion-king-eye-roll:</div>
                 </div>
             </div>
@@ -244,23 +238,23 @@
             <h2 class="category-title">😳 What The Fuck</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/ukGm72ZLZvYfS/giphy.gif" alt="wtf-1" class="emoji-image">
+                    <img src="gifs/wtf.gif" alt="wtf" class="emoji-image">
                     <div class="emoji-name">:wtf:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/l0IypeKl9NJhPFMrK/giphy.gif" alt="wtf-mind-blown" class="emoji-image">
+                    <img src="gifs/wtf-mind-blown.gif" alt="wtf-mind-blown" class="emoji-image">
                     <div class="emoji-name">:wtf-mind-blown:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/Qe5oD5aXjEbKw/giphy.gif" alt="ryan-reynolds-wtf" class="emoji-image">
+                    <img src="gifs/ryan-reynolds-wtf.gif" alt="ryan-reynolds-wtf" class="emoji-image">
                     <div class="emoji-name">:ryan-reynolds-wtf:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/XrHc1gDORei1q/giphy.gif" alt="jenna-marbles-wtf" class="emoji-image">
+                    <img src="gifs/jenna-marbles-wtf.gif" alt="jenna-marbles-wtf" class="emoji-image">
                     <div class="emoji-name">:jenna-marbles-wtf:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/gcjmXVppGVhKw/giphy.gif" alt="surprise-wtf" class="emoji-image">
+                    <img src="gifs/surprise-wtf.gif" alt="surprise-wtf" class="emoji-image">
                     <div class="emoji-name">:surprise-wtf:</div>
                 </div>
             </div>
@@ -270,19 +264,19 @@
             <h2 class="category-title">❓ Why?</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/33kQxwJWugowdAtivp/giphy-downsized.gif" alt="why-are-you-gay" class="emoji-image">
+                    <img src="gifs/why-are-you-gay.gif" alt="why-are-you-gay" class="emoji-image">
                     <div class="emoji-name">:why-are-you-gay:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/c3XhrmfoN5fOpjcl3z/giphy-downsized.gif" alt="hold-up-what" class="emoji-image">
+                    <img src="gifs/hold-up-what.gif" alt="hold-up-what" class="emoji-image">
                     <div class="emoji-name">:hold-up-what:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/1D1ysSBoLxAJImgZlx/giphy.gif" alt="confused-cat" class="emoji-image">
+                    <img src="gifs/confused-cat.gif" alt="confused-cat" class="emoji-image">
                     <div class="emoji-name">:confused-cat:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/Gdap1KQCiv5v2/giphy.gif" alt="confused-freak-out" class="emoji-image">
+                    <img src="gifs/confused-freak-out.gif" alt="confused-freak-out" class="emoji-image">
                     <div class="emoji-name">:confused-freak-out:</div>
                 </div>
             </div>
@@ -292,15 +286,15 @@
             <h2 class="category-title">💪 You Can Do Better</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/phF5aBlMefJLkgey36/giphy-downsized.gif" alt="do-better" class="emoji-image">
+                    <img src="gifs/do-better.gif" alt="do-better" class="emoji-image">
                     <div class="emoji-name">:do-better:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/l0HlwA0F54sn7xWU0/giphy-downsized.gif" alt="you-can-do-better" class="emoji-image">
+                    <img src="gifs/you-can-do-better.gif" alt="you-can-do-better" class="emoji-image">
                     <div class="emoji-name">:you-can-do-better:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/e1xXoQFvI5Sft7f5Dm/giphy.gif" alt="try-again" class="emoji-image">
+                    <img src="gifs/try-again.gif" alt="try-again" class="emoji-image">
                     <div class="emoji-name">:try-again:</div>
                 </div>
             </div>
@@ -310,94 +304,24 @@
             <h2 class="category-title">👌 Ok.</h2>
             <div class="emoji-grid">
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/DFNd1yVyRjmF2/giphy.gif" alt="jlaw-thumbs-up" class="emoji-image">
+                    <img src="gifs/jlaw-thumbs-up.gif" alt="jlaw-thumbs-up" class="emoji-image">
                     <div class="emoji-name">:jlaw-thumbs-up:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/2vrGD7BtskWD8HB5BK/giphy.gif" alt="jimmy-fallon-eh" class="emoji-image">
+                    <img src="gifs/jimmy-fallon-eh.gif" alt="jimmy-fallon-eh" class="emoji-image">
                     <div class="emoji-name">:jimmy-fallon-eh:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/fQoxwZBVWq5jhLXRty/giphy.gif" alt="grinch-if-you-say-so" class="emoji-image">
+                    <img src="gifs/grinch-if-you-say-so.gif" alt="grinch-if-you-say-so" class="emoji-image">
                     <div class="emoji-name">:grinch-if-you-say-so:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/rt96ekQ9jrWg/giphy.gif" alt="sandra-bullock-give-up" class="emoji-image">
+                    <img src="gifs/sandra-bullock-give-up.gif" alt="sandra-bullock-give-up" class="emoji-image">
                     <div class="emoji-name">:sandra-bullock-give-up:</div>
                 </div>
                 <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/R459x856IfF6w/giphy-downsized.gif" alt="jonah-hill-ok" class="emoji-image">
+                    <img src="gifs/jonah-hill-ok.gif" alt="jonah-hill-ok" class="emoji-image">
                     <div class="emoji-name">:jonah-hill-ok:</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🤷 I Don't Hate It</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/4waYnkUhDy1lXTKFhN/giphy.gif" alt="i-dont-hate-it" class="emoji-image">
-                    <div class="emoji-name">:i-dont-hate-it:</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🎉 This Is Great</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/y8Mz1yj13s3kI/giphy.gif" alt="oprah-excited" class="emoji-image">
-                    <div class="emoji-name">:oprah-excited:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media0.giphy.com/media/RMZN4GMUNlryjSb6zS/giphy-downsized.gif" alt="thats-awesome" class="emoji-image">
-                    <div class="emoji-name">:thats-awesome:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/pPXf0Za4dTcnTUi7A2/giphy.gif" alt="awesome" class="emoji-image">
-                    <div class="emoji-name">:awesome:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media4.giphy.com/media/XhHhJrnnaZJERNHJJ1/giphy.gif" alt="clapping-yay" class="emoji-image">
-                    <div class="emoji-name">:clapping-yay:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="taylor_surprised.gif" alt="taylor-surprised" class="emoji-image">
-                    <div class="emoji-name">:taylor-surprised:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="taylor_applause.gif" alt="taylor-applause" class="emoji-image">
-                    <div class="emoji-name">:taylor-applause:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="taylor_happy.gif" alt="taylor-happy" class="emoji-image">
-                    <div class="emoji-name">:taylor-happy:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="taylor_confetti.gif" alt="taylor-confetti" class="emoji-image">
-                    <div class="emoji-name">:taylor-confetti:</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🚫 Can We Not</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/VSE2yr6EBz2ZlYAqvf/giphy.gif" alt="can-we-not" class="emoji-image">
-                    <div class="emoji-name">:can-we-not:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media3.giphy.com/media/hGHM4X6WQTP66tz45g/giphy-downsized.gif" alt="no-way" class="emoji-image">
-                    <div class="emoji-name">:no-way:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media2.giphy.com/media/xT9KVBsC5chQ2tTs0U/giphy.gif" alt="michelle-obama-no" class="emoji-image">
-                    <div class="emoji-name">:michelle-obama-no:</div>
-                </div>
-                <div class="emoji-card">
-                    <img src="https://media1.giphy.com/media/KAdw3FaU3ts3ESUoki/giphy-downsized.gif" alt="schitts-creek-no" class="emoji-image">
-                    <div class="emoji-name">:schitts-creek-no:</div>
                 </div>
             </div>
         </div>
