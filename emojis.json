@@ -1,0 +1,938 @@
+[
+  {
+    "filename": "b99-awkward.gif",
+    "name": "B99 Awkward",
+    "category": "\ud83d\ude94 Brooklyn 99",
+    "tags": "\ud83d\ude94 Brooklyn 99",
+    "description": "Noice! Brooklyn 99 reactions",
+    "size_kb": 1091.9
+  },
+  {
+    "filename": "b99-dance.gif",
+    "name": "B99 Dance",
+    "category": "\ud83d\ude94 Brooklyn 99",
+    "tags": "\ud83d\ude94 Brooklyn 99",
+    "description": "Noice! Brooklyn 99 reactions",
+    "size_kb": 1565.6
+  },
+  {
+    "filename": "b99-interested.gif",
+    "name": "B99 Interested",
+    "category": "\ud83d\ude94 Brooklyn 99",
+    "tags": "\ud83d\ude94 Brooklyn 99",
+    "description": "Noice! Brooklyn 99 reactions",
+    "size_kb": 598.6
+  },
+  {
+    "filename": "b99-noice.gif",
+    "name": "B99 Noice",
+    "category": "\ud83d\ude94 Brooklyn 99",
+    "tags": "\ud83d\ude94 Brooklyn 99",
+    "description": "Noice! Brooklyn 99 reactions",
+    "size_kb": 889.6
+  },
+  {
+    "filename": "b99-yes.gif",
+    "name": "B99 Yes",
+    "category": "\ud83d\ude94 Brooklyn 99",
+    "tags": "\ud83d\ude94 Brooklyn 99",
+    "description": "Noice! Brooklyn 99 reactions",
+    "size_kb": 1767.0
+  },
+  {
+    "filename": "cat-thinking.gif",
+    "name": "Cat Thinking",
+    "category": "\ud83e\udde0 Think Smart",
+    "tags": "\ud83e\udde0 Think/Smart",
+    "description": "Thinking, planning, or being clever",
+    "size_kb": 79.9
+  },
+  {
+    "filename": "clueless-asif.gif",
+    "name": "Clueless Asif",
+    "category": "\ud83d\udc8b Clueless",
+    "tags": "\ud83d\udc8b Clueless",
+    "description": "As if! Clueless reactions",
+    "size_kb": 1213.1
+  },
+  {
+    "filename": "clueless-shopping.gif",
+    "name": "Clueless Shopping",
+    "category": "\ud83d\udc8b Clueless",
+    "tags": "\ud83d\udc8b Clueless",
+    "description": "As if! Clueless reactions",
+    "size_kb": 1690.7
+  },
+  {
+    "filename": "clueless-thinking.gif",
+    "name": "Clueless Thinking",
+    "category": "\ud83d\udc8b Clueless",
+    "tags": "\ud83d\udc8b Clueless",
+    "description": "As if! Clueless reactions",
+    "size_kb": 1818.4
+  },
+  {
+    "filename": "clueless-ugh.gif",
+    "name": "Clueless Ugh",
+    "category": "\ud83d\udc8b Clueless",
+    "tags": "\ud83d\udc8b Clueless",
+    "description": "As if! Clueless reactions",
+    "size_kb": 1377.2
+  },
+  {
+    "filename": "clueless-whatever.gif",
+    "name": "Clueless Whatever",
+    "category": "\ud83d\udc8b Clueless",
+    "tags": "\ud83d\udc8b Clueless",
+    "description": "As if! Clueless reactions",
+    "size_kb": 1452.2
+  },
+  {
+    "filename": "confused-cat.gif",
+    "name": "Confused Cat",
+    "category": "\u2753 Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 165.9
+  },
+  {
+    "filename": "confused-freak-out.gif",
+    "name": "Confused Freak Out",
+    "category": "\u2753 Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 212.3
+  },
+  {
+    "filename": "do-better.gif",
+    "name": "Do Better",
+    "category": "\ud83d\udcaa You Can Do Better",
+    "tags": "\ud83d\udcaa Do Better/Disappointed",
+    "description": "Expressing disappointment or encouraging improvement",
+    "size_kb": 1816.7
+  },
+  {
+    "filename": "elle-endorphins.gif",
+    "name": "Elle Endorphins",
+    "category": "\ud83d\udc96 Legally Blonde",
+    "tags": "\ud83d\udc96 Legally Blonde",
+    "description": "What, like it's hard? Elle Woods energy",
+    "size_kb": 349.6
+  },
+  {
+    "filename": "elle-happy.gif",
+    "name": "Elle Happy",
+    "category": "\ud83d\udc96 Legally Blonde",
+    "tags": "\ud83d\udc96 Legally Blonde",
+    "description": "What, like it's hard? Elle Woods energy",
+    "size_kb": 1713.9
+  },
+  {
+    "filename": "elle-hard.gif",
+    "name": "Elle Hard",
+    "category": "\ud83d\udc96 Legally Blonde",
+    "tags": "\ud83d\udc96 Legally Blonde",
+    "description": "What, like it's hard? Elle Woods energy",
+    "size_kb": 524.0
+  },
+  {
+    "filename": "elle-snap.gif",
+    "name": "Elle Snap",
+    "category": "\ud83d\udc96 Legally Blonde",
+    "tags": "\ud83d\udc96 Legally Blonde",
+    "description": "What, like it's hard? Elle Woods energy",
+    "size_kb": 1889.7
+  },
+  {
+    "filename": "elle-wave.gif",
+    "name": "Elle Wave",
+    "category": "\ud83d\udc96 Legally Blonde",
+    "tags": "\ud83d\udc96 Legally Blonde",
+    "description": "What, like it's hard? Elle Woods energy",
+    "size_kb": 360.5
+  },
+  {
+    "filename": "eras-concert.gif",
+    "name": "Eras Concert",
+    "category": "\ud83c\udfa4 The Eras Tour",
+    "tags": "\ud83c\udfa4 The Eras Tour",
+    "description": "Live concert Taylor Swift moments",
+    "size_kb": 734.2
+  },
+  {
+    "filename": "eras-cruel-summer.gif",
+    "name": "Eras Cruel Summer",
+    "category": "\ud83c\udfa4 The Eras Tour",
+    "tags": "\ud83c\udfa4 The Eras Tour",
+    "description": "Live concert Taylor Swift moments",
+    "size_kb": 536.2
+  },
+  {
+    "filename": "eras-ready.gif",
+    "name": "Eras Ready",
+    "category": "\ud83c\udfa4 The Eras Tour",
+    "tags": "\ud83c\udfa4 The Eras Tour",
+    "description": "Live concert Taylor Swift moments",
+    "size_kb": 351.0
+  },
+  {
+    "filename": "eras-speak-now.gif",
+    "name": "Eras Speak Now",
+    "category": "\ud83c\udfa4 The Eras Tour",
+    "tags": "\ud83c\udfa4 The Eras Tour",
+    "description": "Live concert Taylor Swift moments",
+    "size_kb": 209.6
+  },
+  {
+    "filename": "girl-eye-roll.gif",
+    "name": "Girl Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 731.5
+  },
+  {
+    "filename": "give-me-a-break.gif",
+    "name": "Give Me A Break",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1214.5
+  },
+  {
+    "filename": "grease-dance.gif",
+    "name": "Grease Dance",
+    "category": "\ud83c\udfb8 Grease",
+    "tags": "\ud83c\udfb8 Grease",
+    "description": "Greased lightning energy",
+    "size_kb": 774.6
+  },
+  {
+    "filename": "grease-love.gif",
+    "name": "Grease Love",
+    "category": "\ud83c\udfb8 Grease",
+    "tags": "\ud83c\udfb8 Grease",
+    "description": "Greased lightning energy",
+    "size_kb": 126.6
+  },
+  {
+    "filename": "grease-olivia.gif",
+    "name": "Grease Olivia",
+    "category": "\ud83c\udfb8 Grease",
+    "tags": "\ud83c\udfb8 Grease",
+    "description": "Greased lightning energy",
+    "size_kb": 490.6
+  },
+  {
+    "filename": "grease-shocked.gif",
+    "name": "Grease Shocked",
+    "category": "\ud83c\udfb8 Grease",
+    "tags": "\ud83c\udfb8 Grease",
+    "description": "Greased lightning energy",
+    "size_kb": 1575.8
+  },
+  {
+    "filename": "grinch-if-you-say-so.gif",
+    "name": "Grinch If You Say So",
+    "category": "\ud83d\udc4c Ok.",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 495.3
+  },
+  {
+    "filename": "hamilton-daveed.gif",
+    "name": "Hamilton Daveed",
+    "category": "\ud83c\udfad Hamilton",
+    "tags": "\ud83c\udfad Hamilton",
+    "description": "Revolutionary musical moments",
+    "size_kb": 1358.9
+  },
+  {
+    "filename": "hamilton-king-george.gif",
+    "name": "Hamilton King George",
+    "category": "\ud83c\udfad Hamilton",
+    "tags": "\ud83c\udfad Hamilton",
+    "description": "Revolutionary musical moments",
+    "size_kb": 946.4
+  },
+  {
+    "filename": "hamilton-lin.gif",
+    "name": "Hamilton Lin",
+    "category": "\ud83c\udfad Hamilton",
+    "tags": "\ud83c\udfad Hamilton",
+    "description": "Revolutionary musical moments",
+    "size_kb": 604.3
+  },
+  {
+    "filename": "hamilton-work.gif",
+    "name": "Hamilton Work",
+    "category": "\ud83c\udfad Hamilton",
+    "tags": "\ud83c\udfad Hamilton",
+    "description": "Revolutionary musical moments",
+    "size_kb": 1780.0
+  },
+  {
+    "filename": "hold-up-what.gif",
+    "name": "Hold Up What",
+    "category": "\u2753 Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 1166.2
+  },
+  {
+    "filename": "idiocracy-lol.gif",
+    "name": "Idiocracy Lol",
+    "category": "\ud83e\udde0 Idiocracy",
+    "tags": "\ud83e\udde0 Idiocracy",
+    "description": "Dystopian comedy reactions",
+    "size_kb": 934.1
+  },
+  {
+    "filename": "idiocracy-president.gif",
+    "name": "Idiocracy President",
+    "category": "\ud83e\udde0 Idiocracy",
+    "tags": "\ud83e\udde0 Idiocracy",
+    "description": "Dystopian comedy reactions",
+    "size_kb": 995.6
+  },
+  {
+    "filename": "idiocracy-reaction.gif",
+    "name": "Idiocracy Reaction",
+    "category": "\ud83e\udde0 Idiocracy",
+    "tags": "\ud83e\udde0 Idiocracy",
+    "description": "Dystopian comedy reactions",
+    "size_kb": 680.1
+  },
+  {
+    "filename": "idiocracy-wow.gif",
+    "name": "Idiocracy Wow",
+    "category": "\ud83e\udde0 Idiocracy",
+    "tags": "\ud83e\udde0 Idiocracy",
+    "description": "Dystopian comedy reactions",
+    "size_kb": 1036.6
+  },
+  {
+    "filename": "iron-man-eye-roll.gif",
+    "name": "Iron Man Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 715.5
+  },
+  {
+    "filename": "jenna-marbles-wtf.gif",
+    "name": "Jenna Marbles Wtf",
+    "category": "\ud83d\ude33 What The Fuck",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 425.5
+  },
+  {
+    "filename": "jessica-jones-eye-roll.gif",
+    "name": "Jessica Jones Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1161.3
+  },
+  {
+    "filename": "jimmy-fallon-eh.gif",
+    "name": "Jimmy Fallon Eh",
+    "category": "\ud83d\udc4c Ok.",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 694.2
+  },
+  {
+    "filename": "jlaw-thumbs-up.gif",
+    "name": "Jlaw Thumbs Up",
+    "category": "\ud83d\udc4c Ok.",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 916.3
+  },
+  {
+    "filename": "jonah-hill-ok.gif",
+    "name": "Jonah Hill Ok",
+    "category": "\ud83d\udc4c Ok.",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 1940.1
+  },
+  {
+    "filename": "jt-eye-roll.gif",
+    "name": "Jt Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1696.2
+  },
+  {
+    "filename": "judge-judy-eye-roll.gif",
+    "name": "Judge Judy Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 849.3
+  },
+  {
+    "filename": "lion-king-eye-roll.gif",
+    "name": "Lion King Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 166.1
+  },
+  {
+    "filename": "mamma-mia-dance.gif",
+    "name": "Mamma Mia Dance",
+    "category": "\ud83c\udfac Mamma Mia",
+    "tags": "\ud83c\udfac Mamma Mia",
+    "description": "ABBA-powered joy and drama",
+    "size_kb": 1623.4
+  },
+  {
+    "filename": "mamma-mia-lol.gif",
+    "name": "Mamma Mia Lol",
+    "category": "\ud83c\udfac Mamma Mia",
+    "tags": "\ud83c\udfac Mamma Mia",
+    "description": "ABBA-powered joy and drama",
+    "size_kb": 1022.4
+  },
+  {
+    "filename": "mamma-mia-meryl.gif",
+    "name": "Mamma Mia Meryl",
+    "category": "\ud83c\udfac Mamma Mia",
+    "tags": "\ud83c\udfac Mamma Mia",
+    "description": "ABBA-powered joy and drama",
+    "size_kb": 339.2
+  },
+  {
+    "filename": "mamma-mia-singing.gif",
+    "name": "Mamma Mia Singing",
+    "category": "\ud83c\udfac Mamma Mia",
+    "tags": "\ud83c\udfac Mamma Mia",
+    "description": "ABBA-powered joy and drama",
+    "size_kb": 1523.7
+  },
+  {
+    "filename": "mg-awkward.gif",
+    "name": "Mg Awkward",
+    "category": "\ud83d\udc85 Mean Girls",
+    "tags": "\ud83d\udc85 Mean Girls",
+    "description": "That is so fetch! Mean Girls moments",
+    "size_kb": 1120.5
+  },
+  {
+    "filename": "mg-butter.gif",
+    "name": "Mg Butter",
+    "category": "\ud83d\udc85 Mean Girls",
+    "tags": "\ud83d\udc85 Mean Girls",
+    "description": "That is so fetch! Mean Girls moments",
+    "size_kb": 1748.8
+  },
+  {
+    "filename": "mg-fetch.gif",
+    "name": "Mg Fetch",
+    "category": "\ud83d\udc85 Mean Girls",
+    "tags": "\ud83d\udc85 Mean Girls",
+    "description": "That is so fetch! Mean Girls moments",
+    "size_kb": 883.2
+  },
+  {
+    "filename": "mg-idk.gif",
+    "name": "Mg Idk",
+    "category": "\ud83d\udc85 Mean Girls",
+    "tags": "\ud83d\udc85 Mean Girls",
+    "description": "That is so fetch! Mean Girls moments",
+    "size_kb": 738.4
+  },
+  {
+    "filename": "mg-obsessed.gif",
+    "name": "Mg Obsessed",
+    "category": "\ud83d\udc85 Mean Girls",
+    "tags": "\ud83d\udc85 Mean Girls",
+    "description": "That is so fetch! Mean Girls moments",
+    "size_kb": 932.7
+  },
+  {
+    "filename": "miranda-disappoint.gif",
+    "name": "Miranda Disappoint",
+    "category": "\ud83d\udc60 Devil Wears Prada",
+    "tags": "\ud83d\udc60 Devil Wears Prada",
+    "description": "Miranda Priestly iconic moments",
+    "size_kb": 1332.2
+  },
+  {
+    "filename": "miranda-look.gif",
+    "name": "Miranda Look",
+    "category": "\ud83d\udc60 Devil Wears Prada",
+    "tags": "\ud83d\udc60 Devil Wears Prada",
+    "description": "Miranda Priestly iconic moments",
+    "size_kb": 1221.7
+  },
+  {
+    "filename": "miranda-ready.gif",
+    "name": "Miranda Ready",
+    "category": "\ud83d\udc60 Devil Wears Prada",
+    "tags": "\ud83d\udc60 Devil Wears Prada",
+    "description": "Miranda Priestly iconic moments",
+    "size_kb": 834.6
+  },
+  {
+    "filename": "miranda-shades.gif",
+    "name": "Miranda Shades",
+    "category": "\ud83d\udc60 Devil Wears Prada",
+    "tags": "\ud83d\udc60 Devil Wears Prada",
+    "description": "Miranda Priestly iconic moments",
+    "size_kb": 1356.1
+  },
+  {
+    "filename": "miranda-thatsall.gif",
+    "name": "Miranda Thatsall",
+    "category": "\ud83d\udc60 Devil Wears Prada",
+    "tags": "\ud83d\udc60 Devil Wears Prada",
+    "description": "Miranda Priestly iconic moments",
+    "size_kb": 457.3
+  },
+  {
+    "filename": "nba-eye-roll.gif",
+    "name": "Nba Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1595.7
+  },
+  {
+    "filename": "office-eye-roll.gif",
+    "name": "Office Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 575.8
+  },
+  {
+    "filename": "pawnee-breakfast.gif",
+    "name": "Pawnee Breakfast",
+    "category": "\ud83d\udcfa Parks and Rec",
+    "tags": "\ud83d\udcfa Parks & Rec",
+    "description": "Various Leslie Knope and Parks reactions",
+    "size_kb": 1782.5
+  },
+  {
+    "filename": "pawnee-deal.gif",
+    "name": "Pawnee Deal",
+    "category": "\ud83d\udcfa Parks and Rec",
+    "tags": "\ud83d\udcfa Parks & Rec",
+    "description": "Various Leslie Knope and Parks reactions",
+    "size_kb": 672.1
+  },
+  {
+    "filename": "pawnee-excited.gif",
+    "name": "Pawnee Excited",
+    "category": "\ud83d\udcfa Parks and Rec",
+    "tags": "\ud83d\udcfa Parks & Rec",
+    "description": "Various Leslie Knope and Parks reactions",
+    "size_kb": 1775.3
+  },
+  {
+    "filename": "pawnee-talk.gif",
+    "name": "Pawnee Talk",
+    "category": "\ud83d\udcfa Parks and Rec",
+    "tags": "\ud83d\udcfa Parks & Rec",
+    "description": "Various Leslie Knope and Parks reactions",
+    "size_kb": 1600.6
+  },
+  {
+    "filename": "pawnee-thanks.gif",
+    "name": "Pawnee Thanks",
+    "category": "\ud83d\udcfa Parks and Rec",
+    "tags": "\ud83d\udcfa Parks & Rec",
+    "description": "Various Leslie Knope and Parks reactions",
+    "size_kb": 1501.7
+  },
+  {
+    "filename": "popstar-concert.gif",
+    "name": "Popstar Concert",
+    "category": "\ud83c\udfac Popstar",
+    "tags": "\ud83c\udfac Popstar",
+    "description": "Comedy music moments",
+    "size_kb": 304.8
+  },
+  {
+    "filename": "popstar-cooking.gif",
+    "name": "Popstar Cooking",
+    "category": "\ud83c\udfac Popstar",
+    "tags": "\ud83c\udfac Popstar",
+    "description": "Comedy music moments",
+    "size_kb": 1030.8
+  },
+  {
+    "filename": "popstar-dance.gif",
+    "name": "Popstar Dance",
+    "category": "\ud83c\udfac Popstar",
+    "tags": "\ud83c\udfac Popstar",
+    "description": "Comedy music moments",
+    "size_kb": 236.4
+  },
+  {
+    "filename": "popstar-unicorn.gif",
+    "name": "Popstar Unicorn",
+    "category": "\ud83c\udfac Popstar",
+    "tags": "\ud83c\udfac Popstar",
+    "description": "Comedy music moments",
+    "size_kb": 198.1
+  },
+  {
+    "filename": "roadrunner-running.gif",
+    "name": "Roadrunner Running",
+    "category": "\ud83c\udfc3 Roadrunner Running Fast",
+    "tags": "\ud83c\udfc3 Fast/Speedy/Gone",
+    "description": "For when things are moving fast or someone disappeared quickly",
+    "size_kb": 1583.4
+  },
+  {
+    "filename": "roadrunner-sad.gif",
+    "name": "Roadrunner Sad",
+    "category": "\ud83c\udfc3 Roadrunner Running Fast",
+    "tags": "\ud83c\udfc3 Fast/Speedy/Gone",
+    "description": "For when things are moving fast or someone disappeared quickly",
+    "size_kb": 1444.9
+  },
+  {
+    "filename": "roadrunner-speed.gif",
+    "name": "Roadrunner Speed",
+    "category": "\ud83c\udfc3 Roadrunner Running Fast",
+    "tags": "\ud83c\udfc3 Fast/Speedy/Gone",
+    "description": "For when things are moving fast or someone disappeared quickly",
+    "size_kb": 416.9
+  },
+  {
+    "filename": "ryan-reynolds-wtf.gif",
+    "name": "Ryan Reynolds Wtf",
+    "category": "\ud83d\ude33 What The Fuck",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 420.1
+  },
+  {
+    "filename": "sandra-bullock-give-up.gif",
+    "name": "Sandra Bullock Give Up",
+    "category": "\ud83d\udc4c Ok.",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 517.7
+  },
+  {
+    "filename": "schitts-creek-eye-roll.gif",
+    "name": "Schitts Creek Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1674.6
+  },
+  {
+    "filename": "smarty.gif",
+    "name": "Smarty",
+    "category": "\ud83e\udde0 Think Smart",
+    "tags": "\ud83e\udde0 Think/Smart",
+    "description": "Thinking, planning, or being clever",
+    "size_kb": 1598.1
+  },
+  {
+    "filename": "spaceballs-helmet.gif",
+    "name": "Spaceballs Helmet",
+    "category": "\ud83d\ude80 Spaceballs",
+    "tags": "\ud83d\ude80 Spaceballs",
+    "description": "Mel Brooks space comedy",
+    "size_kb": 833.1
+  },
+  {
+    "filename": "spaceballs-pizza.gif",
+    "name": "Spaceballs Pizza",
+    "category": "\ud83d\ude80 Spaceballs",
+    "tags": "\ud83d\ude80 Spaceballs",
+    "description": "Mel Brooks space comedy",
+    "size_kb": 576.2
+  },
+  {
+    "filename": "spaceballs-reaction.gif",
+    "name": "Spaceballs Reaction",
+    "category": "\ud83d\ude80 Spaceballs",
+    "tags": "\ud83d\ude80 Spaceballs",
+    "description": "Mel Brooks space comedy",
+    "size_kb": 1091.6
+  },
+  {
+    "filename": "spaceballs-vespa.gif",
+    "name": "Spaceballs Vespa",
+    "category": "\ud83d\ude80 Spaceballs",
+    "tags": "\ud83d\ude80 Spaceballs",
+    "description": "Mel Brooks space comedy",
+    "size_kb": 1783.8
+  },
+  {
+    "filename": "surprise-wtf.gif",
+    "name": "Surprise Wtf",
+    "category": "\ud83d\ude33 What The Fuck",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 742.2
+  },
+  {
+    "filename": "taylor-confused.gif",
+    "name": "Taylor Confused",
+    "category": "\ud83d\udc96 Taylor Swift - Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 567.2
+  },
+  {
+    "filename": "taylor-dancing.gif",
+    "name": "Taylor Dancing",
+    "category": "\ud83d\udc96 Taylor Swift - Running Fast",
+    "tags": "\ud83c\udfc3 Fast/Speedy/Gone",
+    "description": "For when things are moving fast or someone disappeared quickly",
+    "size_kb": 1076.7
+  },
+  {
+    "filename": "taylor-disappointed.gif",
+    "name": "Taylor Disappointed",
+    "category": "\ud83d\udc96 Taylor Swift - Do Better",
+    "tags": "\ud83d\udcaa Do Better/Disappointed",
+    "description": "Expressing disappointment or encouraging improvement",
+    "size_kb": 1051.1
+  },
+  {
+    "filename": "taylor-do-better.gif",
+    "name": "Taylor Do Better",
+    "category": "\ud83d\udc96 Taylor Swift - Do Better",
+    "tags": "\ud83d\udcaa Do Better/Disappointed",
+    "description": "Expressing disappointment or encouraging improvement",
+    "size_kb": 423.3
+  },
+  {
+    "filename": "taylor-drunk-eye-roll.gif",
+    "name": "Taylor Drunk Eye Roll",
+    "category": "\ud83d\udc96 Taylor Swift - Eye Roll",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1929.8
+  },
+  {
+    "filename": "taylor-eye-roll.gif",
+    "name": "Taylor Eye Roll",
+    "category": "\ud83d\udc96 Taylor Swift - Eye Roll",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1023.7
+  },
+  {
+    "filename": "taylor-hmm.gif",
+    "name": "Taylor Hmm",
+    "category": "\ud83d\udc96 Taylor Swift - Think Smart",
+    "tags": "\ud83e\udde0 Think/Smart",
+    "description": "Thinking, planning, or being clever",
+    "size_kb": 646.1
+  },
+  {
+    "filename": "taylor-love.gif",
+    "name": "Taylor Love",
+    "category": "\ud83d\udc96 Taylor Swift - This Is Great",
+    "tags": "\ud83c\udf89 Celebration/Excited",
+    "description": "Celebrating success or expressing excitement",
+    "size_kb": 454.8
+  },
+  {
+    "filename": "taylor-mind-blown.gif",
+    "name": "Taylor Mind Blown",
+    "category": "\ud83d\udc96 Taylor Swift - WTF",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 209.5
+  },
+  {
+    "filename": "taylor-ok.gif",
+    "name": "Taylor Ok",
+    "category": "\ud83d\udc96 Taylor Swift - Ok",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 451.4
+  },
+  {
+    "filename": "taylor-shake-it-off.gif",
+    "name": "Taylor Shake It Off",
+    "category": "\ud83d\udc96 Taylor Swift - Running Fast",
+    "tags": "\ud83c\udfc3 Fast/Speedy/Gone",
+    "description": "For when things are moving fast or someone disappeared quickly",
+    "size_kb": 295.9
+  },
+  {
+    "filename": "taylor-shocked.gif",
+    "name": "Taylor Shocked",
+    "category": "\ud83d\udc96 Taylor Swift - WTF",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 1786.8
+  },
+  {
+    "filename": "taylor-thinking.gif",
+    "name": "Taylor Thinking",
+    "category": "\ud83d\udc96 Taylor Swift - Think Smart",
+    "tags": "\ud83e\udde0 Think/Smart",
+    "description": "Thinking, planning, or being clever",
+    "size_kb": 432.0
+  },
+  {
+    "filename": "taylor-thumbs-up.gif",
+    "name": "Taylor Thumbs Up",
+    "category": "\ud83d\udc96 Taylor Swift - Ok",
+    "tags": "\ud83d\udc4c Ok/Meh",
+    "description": "Reluctant agreement or lukewarm acceptance",
+    "size_kb": 793.9
+  },
+  {
+    "filename": "taylor-why.gif",
+    "name": "Taylor Why",
+    "category": "\ud83d\udc96 Taylor Swift - Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 346.5
+  },
+  {
+    "filename": "taylor-wow.gif",
+    "name": "Taylor Wow",
+    "category": "\ud83d\udc96 Taylor Swift - This Is Great",
+    "tags": "\ud83c\udf89 Celebration/Excited",
+    "description": "Celebrating success or expressing excitement",
+    "size_kb": 1097.4
+  },
+  {
+    "filename": "tgp-chidi.gif",
+    "name": "Tgp Chidi",
+    "category": "\ud83d\ude07 The Good Place",
+    "tags": "\ud83d\ude07 The Good Place",
+    "description": "Holy forking shirtballs! Good Place reactions",
+    "size_kb": 1769.9
+  },
+  {
+    "filename": "tgp-eleanor.gif",
+    "name": "Tgp Eleanor",
+    "category": "\ud83d\ude07 The Good Place",
+    "tags": "\ud83d\ude07 The Good Place",
+    "description": "Holy forking shirtballs! Good Place reactions",
+    "size_kb": 1675.5
+  },
+  {
+    "filename": "tgp-frustrated.gif",
+    "name": "Tgp Frustrated",
+    "category": "\ud83d\ude07 The Good Place",
+    "tags": "\ud83d\ude07 The Good Place",
+    "description": "Holy forking shirtballs! Good Place reactions",
+    "size_kb": 1651.5
+  },
+  {
+    "filename": "tgp-holy-fork.gif",
+    "name": "Tgp Holy Fork",
+    "category": "\ud83d\ude07 The Good Place",
+    "tags": "\ud83d\ude07 The Good Place",
+    "description": "Holy forking shirtballs! Good Place reactions",
+    "size_kb": 1727.4
+  },
+  {
+    "filename": "tgp-janet.gif",
+    "name": "Tgp Janet",
+    "category": "\ud83d\ude07 The Good Place",
+    "tags": "\ud83d\ude07 The Good Place",
+    "description": "Holy forking shirtballs! Good Place reactions",
+    "size_kb": 1675.5
+  },
+  {
+    "filename": "think-smart.gif",
+    "name": "Think Smart",
+    "category": "\ud83e\udde0 Think Smart",
+    "tags": "\ud83e\udde0 Think/Smart",
+    "description": "Thinking, planning, or being clever",
+    "size_kb": 1268.0
+  },
+  {
+    "filename": "tommy-elton.gif",
+    "name": "Tommy Elton",
+    "category": "\ud83c\udfb9 Tommy",
+    "tags": "\ud83c\udfb9 Tommy",
+    "description": "Pinball wizard rock opera",
+    "size_kb": 1606.4
+  },
+  {
+    "filename": "tommy-rock.gif",
+    "name": "Tommy Rock",
+    "category": "\ud83c\udfb9 Tommy",
+    "tags": "\ud83c\udfb9 Tommy",
+    "description": "Pinball wizard rock opera",
+    "size_kb": 1765.5
+  },
+  {
+    "filename": "try-again.gif",
+    "name": "Try Again",
+    "category": "\ud83d\udcaa You Can Do Better",
+    "tags": "\ud83d\udcaa Do Better/Disappointed",
+    "description": "Expressing disappointment or encouraging improvement",
+    "size_kb": 1793.3
+  },
+  {
+    "filename": "whatever-eye-roll.gif",
+    "name": "Whatever Eye Roll",
+    "category": "\ud83d\ude44 Eye Roll Collection",
+    "tags": "\ud83d\ude44 Eye Roll",
+    "description": "Expressing annoyance, sarcasm, or disbelief",
+    "size_kb": 1668.4
+  },
+  {
+    "filename": "why-are-you-gay.gif",
+    "name": "Why Are You Gay",
+    "category": "\u2753 Why?",
+    "tags": "\u2753 Why/Confused",
+    "description": "Questioning, confusion, or disbelief",
+    "size_kb": 1718.3
+  },
+  {
+    "filename": "wile-e-falling.gif",
+    "name": "Wile E Falling",
+    "category": "\ud83c\udfdc\ufe0f Wile E Coyote",
+    "tags": "\ud83e\udde0 Think/Smart/Scheming",
+    "description": "For planning, scheming, or when plans backfire",
+    "size_kb": 319.6
+  },
+  {
+    "filename": "wile-e-train.gif",
+    "name": "Wile E Train",
+    "category": "\ud83c\udfdc\ufe0f Wile E Coyote",
+    "tags": "\ud83e\udde0 Think/Smart/Scheming",
+    "description": "For planning, scheming, or when plans backfire",
+    "size_kb": 1732.9
+  },
+  {
+    "filename": "wtf-mind-blown.gif",
+    "name": "Wtf Mind Blown",
+    "category": "\ud83d\ude33 What The Fuck",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 1725.4
+  },
+  {
+    "filename": "wtf.gif",
+    "name": "Wtf",
+    "category": "\ud83d\ude33 What The Fuck",
+    "tags": "\ud83d\ude33 WTF/Shocked",
+    "description": "Mind blown, shocked, or confused reactions",
+    "size_kb": 1748.9
+  },
+  {
+    "filename": "you-can-do-better.gif",
+    "name": "You Can Do Better",
+    "category": "\ud83d\udcaa You Can Do Better",
+    "tags": "\ud83d\udcaa Do Better/Disappointed",
+    "description": "Expressing disappointment or encouraging improvement",
+    "size_kb": 1715.5
+  }
+]

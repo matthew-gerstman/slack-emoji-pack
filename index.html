@@ -3,877 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slack Emoji Pack Preview</title>
+    <title>Slack Emoji Pack Browser</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #2a2a2a;
+            --bg-hover: #3a3a3a;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --text-muted: #666666;
+            --accent: #8b9eff;
+            --accent-hover: #a5b3ff;
+            --success: #2ed573;
+            --danger: #ff4757;
+            --border: #333333;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a0a;
-            padding: 40px 20px 100px;
-            min-height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
-        .container { max-width: 1400px; margin: 0 auto; }
-        h1 { text-align: center; color: #ffffff; font-size: 3em; margin-bottom: 20px; }
-        .subtitle { text-align: center; color: rgba(255,255,255,0.8); font-size: 1.2em; margin-bottom: 40px; }
-        .action-bar { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
-        .action-btn {
-            padding: 12px 20px; border-radius: 8px; border: none; font-size: 14px;
-            font-weight: 600; cursor: pointer; transition: all 0.2s;
-            display: flex; align-items: center; gap: 8px;
+        
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .action-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-        .action-btn.primary { background: #8b9eff; color: #0a0a0a; }
-        .action-btn .count { background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 10px; font-size: 12px; }
-        .stats {
-            background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 30px;
-            display: flex; justify-content: space-around; flex-wrap: wrap;
+        
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
         }
-        .stat-item { text-align: center; padding: 10px 20px; }
-        .stat-number { font-size: 2.5em; font-weight: bold; color: #8b9eff; }
-        .stat-label { color: #aaa; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
-        .category { background: #1a1a1a; border-radius: 12px; padding: 30px; margin-bottom: 30px; }
-        .category-title { font-size: 1.8em; color: #8b9eff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #8b9eff; }
-        .emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 158, 255, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .clear-btn {
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+        
+        .clear-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1em;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+        }
+        
+        /* Tag Cloud */
+        .tag-cloud {
+            background: var(--bg-secondary);
+            padding: 30px 20px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .tag-cloud-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .tag-cloud h2 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+            font-weight: 600;
+            user-select: none;
+        }
+        
+        .tag:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .tag.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+        
+        .tag-count {
+            opacity: 0.7;
+            font-size: 0.85em;
+            margin-left: 4px;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Emoji Grid */
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
         .emoji-card {
-            background: #2a2a2a; border-radius: 8px; padding: 15px; text-align: center;
-            transition: all 0.3s ease; cursor: pointer; position: relative;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .emoji-card:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(139, 158, 255, 0.3); z-index: 10; }
-        .emoji-card.removed { opacity: 0.3; filter: grayscale(1); }
-        .emoji-card.removed:hover { opacity: 0.6; }
-        .remove-btn {
-            position: absolute; top: 5px; right: 5px; width: 24px; height: 24px; border-radius: 50%;
-            background: #ff4757; color: white; border: none; font-size: 14px; font-weight: bold;
-            cursor: pointer; opacity: 0; transition: opacity 0.2s; line-height: 1;
+        
+        .emoji-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(139, 158, 255, 0.3);
+            border-color: var(--accent);
         }
-        .emoji-card:hover .remove-btn { opacity: 1; }
-        .emoji-card.removed .remove-btn { background: #2ed573; opacity: 1; }
-        .emoji-image { width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px; transition: transform 0.3s ease; }
-        .emoji-card:hover .emoji-image { transform: scale(1.6); }
-        .emoji-name { font-weight: 600; color: #e0e0e0; font-size: 0.8em; word-break: break-word; }
+        
+        .emoji-card.selected {
+            border-color: var(--success);
+            background: rgba(46, 213, 115, 0.1);
+        }
+        
+        .emoji-card.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .emoji-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .emoji-card:hover .emoji-image {
+            transform: scale(1.2);
+        }
+        
+        .emoji-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9em;
+            margin-bottom: 6px;
+            word-break: break-word;
+        }
+        
+        .emoji-tags {
+            font-size: 0.75em;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        .emoji-size {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        /* Action Bar */
+        .action-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+        }
+        
+        .action-btn {
+            padding: 14px 24px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .action-btn.primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+        
+        .action-btn.secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+        
+        .action-btn .count {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .empty-state-title {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .empty-state-text {
+            color: var(--text-muted);
+        }
+        
+        /* Toast Notifications */
         .toast {
-            position: fixed; bottom: 80px; right: 20px; background: #2ed573; color: #0a0a0a;
-            padding: 12px 20px; border-radius: 8px; font-weight: 600; opacity: 0;
-            transform: translateY(20px); transition: all 0.3s; z-index: 1001;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: var(--success);
+            color: var(--bg-primary);
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-        .toast.show { opacity: 1; transform: translateY(0); }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .emoji-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            
+            .emoji-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .action-bar {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                justify-content: space-between;
+            }
+            
+            .action-btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎨 Slack Emoji Pack</h1>
-        <p class="subtitle">117 curated GIFs • Hover to zoom • Click X to remove</p>
-        
-        <div class="stats">
-            <div class="stat-item"><div class="stat-number" id="totalCount">117</div><div class="stat-label">Total Emojis</div></div>
-            <div class="stat-item"><div class="stat-number" id="activeCount">117</div><div class="stat-label">Active</div></div>
-            <div class="stat-item"><div class="stat-number" id="removedCount">0</div><div class="stat-label">Removed</div></div>
-            <div class="stat-item"><div class="stat-number">24</div><div class="stat-label">Categories</div></div>
-        </div>
-
-        <div class="category">
-            <h2 class="category-title">🏃 Roadrunner Running Fast</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="roadrunner-running">
-                    <button class="remove-btn" onclick="toggleRemove('roadrunner-running')">×</button>
-                    <img src="gifs/roadrunner-running.gif" alt="roadrunner-running" class="emoji-image">
-                    <div class="emoji-name">:roadrunner-running:</div>
-                </div>
-                <div class="emoji-card" data-name="roadrunner-speed">
-                    <button class="remove-btn" onclick="toggleRemove('roadrunner-speed')">×</button>
-                    <img src="gifs/roadrunner-speed.gif" alt="roadrunner-speed" class="emoji-image">
-                    <div class="emoji-name">:roadrunner-speed:</div>
-                </div>
-                <div class="emoji-card" data-name="roadrunner-sad">
-                    <button class="remove-btn" onclick="toggleRemove('roadrunner-sad')">×</button>
-                    <img src="gifs/roadrunner-sad.gif" alt="roadrunner-sad" class="emoji-image">
-                    <div class="emoji-name">:roadrunner-sad:</div>
-                </div>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>🎨 Slack Emoji Pack Browser</h1>
+            <p class="header-subtitle">Discover and download custom emojis for your Slack workspace</p>
+            
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput" 
+                    placeholder="Search emojis by name, tag, or description..."
+                    autocomplete="off"
+                >
+                <button class="clear-btn" id="clearBtn">Clear All</button>
             </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🏜️ Wile E Coyote</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="wile-e-falling">
-                    <button class="remove-btn" onclick="toggleRemove('wile-e-falling')">×</button>
-                    <img src="gifs/wile-e-falling.gif" alt="wile-e-falling" class="emoji-image">
-                    <div class="emoji-name">:wile-e-falling:</div>
-                </div>
-                <div class="emoji-card" data-name="wile-e-train">
-                    <button class="remove-btn" onclick="toggleRemove('wile-e-train')">×</button>
-                    <img src="gifs/wile-e-train.gif" alt="wile-e-train" class="emoji-image">
-                    <div class="emoji-name">:wile-e-train:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🧠 Think Smart</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="think-smart">
-                    <button class="remove-btn" onclick="toggleRemove('think-smart')">×</button>
-                    <img src="gifs/think-smart.gif" alt="think-smart" class="emoji-image">
-                    <div class="emoji-name">:think-smart:</div>
-                </div>
-                <div class="emoji-card" data-name="cat-thinking">
-                    <button class="remove-btn" onclick="toggleRemove('cat-thinking')">×</button>
-                    <img src="gifs/cat-thinking.gif" alt="cat-thinking" class="emoji-image">
-                    <div class="emoji-name">:cat-thinking:</div>
-                </div>
-                <div class="emoji-card" data-name="smarty">
-                    <button class="remove-btn" onclick="toggleRemove('smarty')">×</button>
-                    <img src="gifs/smarty.gif" alt="smarty" class="emoji-image">
-                    <div class="emoji-name">:smarty:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🙄 Eye Roll Collection</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="jessica-jones-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('jessica-jones-eye-roll')">×</button>
-                    <img src="gifs/jessica-jones-eye-roll.gif" alt="jessica-jones-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:jessica-jones-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="girl-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('girl-eye-roll')">×</button>
-                    <img src="gifs/girl-eye-roll.gif" alt="girl-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:girl-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="iron-man-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('iron-man-eye-roll')">×</button>
-                    <img src="gifs/iron-man-eye-roll.gif" alt="iron-man-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:iron-man-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="office-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('office-eye-roll')">×</button>
-                    <img src="gifs/office-eye-roll.gif" alt="office-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:office-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="jt-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('jt-eye-roll')">×</button>
-                    <img src="gifs/jt-eye-roll.gif" alt="jt-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:jt-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="whatever-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('whatever-eye-roll')">×</button>
-                    <img src="gifs/whatever-eye-roll.gif" alt="whatever-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:whatever-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="judge-judy-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('judge-judy-eye-roll')">×</button>
-                    <img src="gifs/judge-judy-eye-roll.gif" alt="judge-judy-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:judge-judy-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="schitts-creek-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('schitts-creek-eye-roll')">×</button>
-                    <img src="gifs/schitts-creek-eye-roll.gif" alt="schitts-creek-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:schitts-creek-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="nba-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('nba-eye-roll')">×</button>
-                    <img src="gifs/nba-eye-roll.gif" alt="nba-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:nba-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="give-me-a-break">
-                    <button class="remove-btn" onclick="toggleRemove('give-me-a-break')">×</button>
-                    <img src="gifs/give-me-a-break.gif" alt="give-me-a-break" class="emoji-image">
-                    <div class="emoji-name">:give-me-a-break:</div>
-                </div>
-                <div class="emoji-card" data-name="lion-king-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('lion-king-eye-roll')">×</button>
-                    <img src="gifs/lion-king-eye-roll.gif" alt="lion-king-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:lion-king-eye-roll:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">😳 What The Fuck</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="wtf">
-                    <button class="remove-btn" onclick="toggleRemove('wtf')">×</button>
-                    <img src="gifs/wtf.gif" alt="wtf" class="emoji-image">
-                    <div class="emoji-name">:wtf:</div>
-                </div>
-                <div class="emoji-card" data-name="wtf-mind-blown">
-                    <button class="remove-btn" onclick="toggleRemove('wtf-mind-blown')">×</button>
-                    <img src="gifs/wtf-mind-blown.gif" alt="wtf-mind-blown" class="emoji-image">
-                    <div class="emoji-name">:wtf-mind-blown:</div>
-                </div>
-                <div class="emoji-card" data-name="ryan-reynolds-wtf">
-                    <button class="remove-btn" onclick="toggleRemove('ryan-reynolds-wtf')">×</button>
-                    <img src="gifs/ryan-reynolds-wtf.gif" alt="ryan-reynolds-wtf" class="emoji-image">
-                    <div class="emoji-name">:ryan-reynolds-wtf:</div>
-                </div>
-                <div class="emoji-card" data-name="jenna-marbles-wtf">
-                    <button class="remove-btn" onclick="toggleRemove('jenna-marbles-wtf')">×</button>
-                    <img src="gifs/jenna-marbles-wtf.gif" alt="jenna-marbles-wtf" class="emoji-image">
-                    <div class="emoji-name">:jenna-marbles-wtf:</div>
-                </div>
-                <div class="emoji-card" data-name="surprise-wtf">
-                    <button class="remove-btn" onclick="toggleRemove('surprise-wtf')">×</button>
-                    <img src="gifs/surprise-wtf.gif" alt="surprise-wtf" class="emoji-image">
-                    <div class="emoji-name">:surprise-wtf:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">❓ Why?</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="why-are-you-gay">
-                    <button class="remove-btn" onclick="toggleRemove('why-are-you-gay')">×</button>
-                    <img src="gifs/why-are-you-gay.gif" alt="why-are-you-gay" class="emoji-image">
-                    <div class="emoji-name">:why-are-you-gay:</div>
-                </div>
-                <div class="emoji-card" data-name="hold-up-what">
-                    <button class="remove-btn" onclick="toggleRemove('hold-up-what')">×</button>
-                    <img src="gifs/hold-up-what.gif" alt="hold-up-what" class="emoji-image">
-                    <div class="emoji-name">:hold-up-what:</div>
-                </div>
-                <div class="emoji-card" data-name="confused-cat">
-                    <button class="remove-btn" onclick="toggleRemove('confused-cat')">×</button>
-                    <img src="gifs/confused-cat.gif" alt="confused-cat" class="emoji-image">
-                    <div class="emoji-name">:confused-cat:</div>
-                </div>
-                <div class="emoji-card" data-name="confused-freak-out">
-                    <button class="remove-btn" onclick="toggleRemove('confused-freak-out')">×</button>
-                    <img src="gifs/confused-freak-out.gif" alt="confused-freak-out" class="emoji-image">
-                    <div class="emoji-name">:confused-freak-out:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💪 You Can Do Better</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="do-better">
-                    <button class="remove-btn" onclick="toggleRemove('do-better')">×</button>
-                    <img src="gifs/do-better.gif" alt="do-better" class="emoji-image">
-                    <div class="emoji-name">:do-better:</div>
-                </div>
-                <div class="emoji-card" data-name="you-can-do-better">
-                    <button class="remove-btn" onclick="toggleRemove('you-can-do-better')">×</button>
-                    <img src="gifs/you-can-do-better.gif" alt="you-can-do-better" class="emoji-image">
-                    <div class="emoji-name">:you-can-do-better:</div>
-                </div>
-                <div class="emoji-card" data-name="try-again">
-                    <button class="remove-btn" onclick="toggleRemove('try-again')">×</button>
-                    <img src="gifs/try-again.gif" alt="try-again" class="emoji-image">
-                    <div class="emoji-name">:try-again:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">👌 Ok.</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="jlaw-thumbs-up">
-                    <button class="remove-btn" onclick="toggleRemove('jlaw-thumbs-up')">×</button>
-                    <img src="gifs/jlaw-thumbs-up.gif" alt="jlaw-thumbs-up" class="emoji-image">
-                    <div class="emoji-name">:jlaw-thumbs-up:</div>
-                </div>
-                <div class="emoji-card" data-name="jimmy-fallon-eh">
-                    <button class="remove-btn" onclick="toggleRemove('jimmy-fallon-eh')">×</button>
-                    <img src="gifs/jimmy-fallon-eh.gif" alt="jimmy-fallon-eh" class="emoji-image">
-                    <div class="emoji-name">:jimmy-fallon-eh:</div>
-                </div>
-                <div class="emoji-card" data-name="grinch-if-you-say-so">
-                    <button class="remove-btn" onclick="toggleRemove('grinch-if-you-say-so')">×</button>
-                    <img src="gifs/grinch-if-you-say-so.gif" alt="grinch-if-you-say-so" class="emoji-image">
-                    <div class="emoji-name">:grinch-if-you-say-so:</div>
-                </div>
-                <div class="emoji-card" data-name="sandra-bullock-give-up">
-                    <button class="remove-btn" onclick="toggleRemove('sandra-bullock-give-up')">×</button>
-                    <img src="gifs/sandra-bullock-give-up.gif" alt="sandra-bullock-give-up" class="emoji-image">
-                    <div class="emoji-name">:sandra-bullock-give-up:</div>
-                </div>
-                <div class="emoji-card" data-name="jonah-hill-ok">
-                    <button class="remove-btn" onclick="toggleRemove('jonah-hill-ok')">×</button>
-                    <img src="gifs/jonah-hill-ok.gif" alt="jonah-hill-ok" class="emoji-image">
-                    <div class="emoji-name">:jonah-hill-ok:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Running Fast</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-dancing">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-dancing')">×</button>
-                    <img src="gifs/taylor-dancing.gif" alt="taylor-dancing" class="emoji-image">
-                    <div class="emoji-name">:taylor-dancing:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-shake-it-off">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-shake-it-off')">×</button>
-                    <img src="gifs/taylor-shake-it-off.gif" alt="taylor-shake-it-off" class="emoji-image">
-                    <div class="emoji-name">:taylor-shake-it-off:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Eye Roll</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-eye-roll')">×</button>
-                    <img src="gifs/taylor-eye-roll.gif" alt="taylor-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:taylor-eye-roll:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-drunk-eye-roll">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-drunk-eye-roll')">×</button>
-                    <img src="gifs/taylor-drunk-eye-roll.gif" alt="taylor-drunk-eye-roll" class="emoji-image">
-                    <div class="emoji-name">:taylor-drunk-eye-roll:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Think Smart</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-thinking">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-thinking')">×</button>
-                    <img src="gifs/taylor-thinking.gif" alt="taylor-thinking" class="emoji-image">
-                    <div class="emoji-name">:taylor-thinking:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-hmm">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-hmm')">×</button>
-                    <img src="gifs/taylor-hmm.gif" alt="taylor-hmm" class="emoji-image">
-                    <div class="emoji-name">:taylor-hmm:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - WTF</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-mind-blown">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-mind-blown')">×</button>
-                    <img src="gifs/taylor-mind-blown.gif" alt="taylor-mind-blown" class="emoji-image">
-                    <div class="emoji-name">:taylor-mind-blown:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-shocked">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-shocked')">×</button>
-                    <img src="gifs/taylor-shocked.gif" alt="taylor-shocked" class="emoji-image">
-                    <div class="emoji-name">:taylor-shocked:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Why?</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-confused">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-confused')">×</button>
-                    <img src="gifs/taylor-confused.gif" alt="taylor-confused" class="emoji-image">
-                    <div class="emoji-name">:taylor-confused:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-why">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-why')">×</button>
-                    <img src="gifs/taylor-why.gif" alt="taylor-why" class="emoji-image">
-                    <div class="emoji-name">:taylor-why:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Do Better</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-disappointed">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-disappointed')">×</button>
-                    <img src="gifs/taylor-disappointed.gif" alt="taylor-disappointed" class="emoji-image">
-                    <div class="emoji-name">:taylor-disappointed:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-do-better">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-do-better')">×</button>
-                    <img src="gifs/taylor-do-better.gif" alt="taylor-do-better" class="emoji-image">
-                    <div class="emoji-name">:taylor-do-better:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - Ok</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-thumbs-up">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-thumbs-up')">×</button>
-                    <img src="gifs/taylor-thumbs-up.gif" alt="taylor-thumbs-up" class="emoji-image">
-                    <div class="emoji-name">:taylor-thumbs-up:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-ok">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-ok')">×</button>
-                    <img src="gifs/taylor-ok.gif" alt="taylor-ok" class="emoji-image">
-                    <div class="emoji-name">:taylor-ok:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Taylor Swift - This Is Great</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="taylor-wow">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-wow')">×</button>
-                    <img src="gifs/taylor-wow.gif" alt="taylor-wow" class="emoji-image">
-                    <div class="emoji-name">:taylor-wow:</div>
-                </div>
-                <div class="emoji-card" data-name="taylor-love">
-                    <button class="remove-btn" onclick="toggleRemove('taylor-love')">×</button>
-                    <img src="gifs/taylor-love.gif" alt="taylor-love" class="emoji-image">
-                    <div class="emoji-name">:taylor-love:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎬 Mamma Mia</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="mamma-mia-meryl">
-                    <button class="remove-btn" onclick="toggleRemove('mamma-mia-meryl')">×</button>
-                    <img src="gifs/mamma-mia-meryl.gif" alt="mamma-mia-meryl" class="emoji-image">
-                    <div class="emoji-name">:mamma-mia-meryl:</div>
-                </div>
-                <div class="emoji-card" data-name="mamma-mia-dance">
-                    <button class="remove-btn" onclick="toggleRemove('mamma-mia-dance')">×</button>
-                    <img src="gifs/mamma-mia-dance.gif" alt="mamma-mia-dance" class="emoji-image">
-                    <div class="emoji-name">:mamma-mia-dance:</div>
-                </div>
-                <div class="emoji-card" data-name="mamma-mia-lol">
-                    <button class="remove-btn" onclick="toggleRemove('mamma-mia-lol')">×</button>
-                    <img src="gifs/mamma-mia-lol.gif" alt="mamma-mia-lol" class="emoji-image">
-                    <div class="emoji-name">:mamma-mia-lol:</div>
-                </div>
-                <div class="emoji-card" data-name="mamma-mia-singing">
-                    <button class="remove-btn" onclick="toggleRemove('mamma-mia-singing')">×</button>
-                    <img src="gifs/mamma-mia-singing.gif" alt="mamma-mia-singing" class="emoji-image">
-                    <div class="emoji-name">:mamma-mia-singing:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎭 Hamilton</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="hamilton-lin">
-                    <button class="remove-btn" onclick="toggleRemove('hamilton-lin')">×</button>
-                    <img src="gifs/hamilton-lin.gif" alt="hamilton-lin" class="emoji-image">
-                    <div class="emoji-name">:hamilton-lin:</div>
-                </div>
-                <div class="emoji-card" data-name="hamilton-work">
-                    <button class="remove-btn" onclick="toggleRemove('hamilton-work')">×</button>
-                    <img src="gifs/hamilton-work.gif" alt="hamilton-work" class="emoji-image">
-                    <div class="emoji-name">:hamilton-work:</div>
-                </div>
-                <div class="emoji-card" data-name="hamilton-king-george">
-                    <button class="remove-btn" onclick="toggleRemove('hamilton-king-george')">×</button>
-                    <img src="gifs/hamilton-king-george.gif" alt="hamilton-king-george" class="emoji-image">
-                    <div class="emoji-name">:hamilton-king-george:</div>
-                </div>
-                <div class="emoji-card" data-name="hamilton-daveed">
-                    <button class="remove-btn" onclick="toggleRemove('hamilton-daveed')">×</button>
-                    <img src="gifs/hamilton-daveed.gif" alt="hamilton-daveed" class="emoji-image">
-                    <div class="emoji-name">:hamilton-daveed:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎤 The Eras Tour</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="eras-cruel-summer">
-                    <button class="remove-btn" onclick="toggleRemove('eras-cruel-summer')">×</button>
-                    <img src="gifs/eras-cruel-summer.gif" alt="eras-cruel-summer" class="emoji-image">
-                    <div class="emoji-name">:eras-cruel-summer:</div>
-                </div>
-                <div class="emoji-card" data-name="eras-ready">
-                    <button class="remove-btn" onclick="toggleRemove('eras-ready')">×</button>
-                    <img src="gifs/eras-ready.gif" alt="eras-ready" class="emoji-image">
-                    <div class="emoji-name">:eras-ready:</div>
-                </div>
-                <div class="emoji-card" data-name="eras-speak-now">
-                    <button class="remove-btn" onclick="toggleRemove('eras-speak-now')">×</button>
-                    <img src="gifs/eras-speak-now.gif" alt="eras-speak-now" class="emoji-image">
-                    <div class="emoji-name">:eras-speak-now:</div>
-                </div>
-                <div class="emoji-card" data-name="eras-concert">
-                    <button class="remove-btn" onclick="toggleRemove('eras-concert')">×</button>
-                    <img src="gifs/eras-concert.gif" alt="eras-concert" class="emoji-image">
-                    <div class="emoji-name">:eras-concert:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎸 Grease</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="grease-olivia">
-                    <button class="remove-btn" onclick="toggleRemove('grease-olivia')">×</button>
-                    <img src="gifs/grease-olivia.gif" alt="grease-olivia" class="emoji-image">
-                    <div class="emoji-name">:grease-olivia:</div>
-                </div>
-                <div class="emoji-card" data-name="grease-love">
-                    <button class="remove-btn" onclick="toggleRemove('grease-love')">×</button>
-                    <img src="gifs/grease-love.gif" alt="grease-love" class="emoji-image">
-                    <div class="emoji-name">:grease-love:</div>
-                </div>
-                <div class="emoji-card" data-name="grease-shocked">
-                    <button class="remove-btn" onclick="toggleRemove('grease-shocked')">×</button>
-                    <img src="gifs/grease-shocked.gif" alt="grease-shocked" class="emoji-image">
-                    <div class="emoji-name">:grease-shocked:</div>
-                </div>
-                <div class="emoji-card" data-name="grease-dance">
-                    <button class="remove-btn" onclick="toggleRemove('grease-dance')">×</button>
-                    <img src="gifs/grease-dance.gif" alt="grease-dance" class="emoji-image">
-                    <div class="emoji-name">:grease-dance:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎹 Tommy</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="tommy-rock">
-                    <button class="remove-btn" onclick="toggleRemove('tommy-rock')">×</button>
-                    <img src="gifs/tommy-rock.gif" alt="tommy-rock" class="emoji-image">
-                    <div class="emoji-name">:tommy-rock:</div>
-                </div>
-                <div class="emoji-card" data-name="tommy-elton">
-                    <button class="remove-btn" onclick="toggleRemove('tommy-elton')">×</button>
-                    <img src="gifs/tommy-elton.gif" alt="tommy-elton" class="emoji-image">
-                    <div class="emoji-name">:tommy-elton:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🎬 Popstar</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="popstar-cooking">
-                    <button class="remove-btn" onclick="toggleRemove('popstar-cooking')">×</button>
-                    <img src="gifs/popstar-cooking.gif" alt="popstar-cooking" class="emoji-image">
-                    <div class="emoji-name">:popstar-cooking:</div>
-                </div>
-                <div class="emoji-card" data-name="popstar-unicorn">
-                    <button class="remove-btn" onclick="toggleRemove('popstar-unicorn')">×</button>
-                    <img src="gifs/popstar-unicorn.gif" alt="popstar-unicorn" class="emoji-image">
-                    <div class="emoji-name">:popstar-unicorn:</div>
-                </div>
-                <div class="emoji-card" data-name="popstar-concert">
-                    <button class="remove-btn" onclick="toggleRemove('popstar-concert')">×</button>
-                    <img src="gifs/popstar-concert.gif" alt="popstar-concert" class="emoji-image">
-                    <div class="emoji-name">:popstar-concert:</div>
-                </div>
-                <div class="emoji-card" data-name="popstar-dance">
-                    <button class="remove-btn" onclick="toggleRemove('popstar-dance')">×</button>
-                    <img src="gifs/popstar-dance.gif" alt="popstar-dance" class="emoji-image">
-                    <div class="emoji-name">:popstar-dance:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🧠 Idiocracy</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="idiocracy-president">
-                    <button class="remove-btn" onclick="toggleRemove('idiocracy-president')">×</button>
-                    <img src="gifs/idiocracy-president.gif" alt="idiocracy-president" class="emoji-image">
-                    <div class="emoji-name">:idiocracy-president:</div>
-                </div>
-                <div class="emoji-card" data-name="idiocracy-lol">
-                    <button class="remove-btn" onclick="toggleRemove('idiocracy-lol')">×</button>
-                    <img src="gifs/idiocracy-lol.gif" alt="idiocracy-lol" class="emoji-image">
-                    <div class="emoji-name">:idiocracy-lol:</div>
-                </div>
-                <div class="emoji-card" data-name="idiocracy-wow">
-                    <button class="remove-btn" onclick="toggleRemove('idiocracy-wow')">×</button>
-                    <img src="gifs/idiocracy-wow.gif" alt="idiocracy-wow" class="emoji-image">
-                    <div class="emoji-name">:idiocracy-wow:</div>
-                </div>
-                <div class="emoji-card" data-name="idiocracy-reaction">
-                    <button class="remove-btn" onclick="toggleRemove('idiocracy-reaction')">×</button>
-                    <img src="gifs/idiocracy-reaction.gif" alt="idiocracy-reaction" class="emoji-image">
-                    <div class="emoji-name">:idiocracy-reaction:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🚀 Spaceballs</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="spaceballs-helmet">
-                    <button class="remove-btn" onclick="toggleRemove('spaceballs-helmet')">×</button>
-                    <img src="gifs/spaceballs-helmet.gif" alt="spaceballs-helmet" class="emoji-image">
-                    <div class="emoji-name">:spaceballs-helmet:</div>
-                </div>
-                <div class="emoji-card" data-name="spaceballs-reaction">
-                    <button class="remove-btn" onclick="toggleRemove('spaceballs-reaction')">×</button>
-                    <img src="gifs/spaceballs-reaction.gif" alt="spaceballs-reaction" class="emoji-image">
-                    <div class="emoji-name">:spaceballs-reaction:</div>
-                </div>
-                <div class="emoji-card" data-name="spaceballs-pizza">
-                    <button class="remove-btn" onclick="toggleRemove('spaceballs-pizza')">×</button>
-                    <img src="gifs/spaceballs-pizza.gif" alt="spaceballs-pizza" class="emoji-image">
-                    <div class="emoji-name">:spaceballs-pizza:</div>
-                </div>
-                <div class="emoji-card" data-name="spaceballs-vespa">
-                    <button class="remove-btn" onclick="toggleRemove('spaceballs-vespa')">×</button>
-                    <img src="gifs/spaceballs-vespa.gif" alt="spaceballs-vespa" class="emoji-image">
-                    <div class="emoji-name">:spaceballs-vespa:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">📺 Parks and Rec</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="pawnee-talk">
-                    <button class="remove-btn" onclick="toggleRemove('pawnee-talk')">×</button>
-                    <img src="gifs/pawnee-talk.gif" alt="pawnee-talk" class="emoji-image">
-                    <div class="emoji-name">:pawnee-talk:</div>
-                </div>
-                <div class="emoji-card" data-name="pawnee-deal">
-                    <button class="remove-btn" onclick="toggleRemove('pawnee-deal')">×</button>
-                    <img src="gifs/pawnee-deal.gif" alt="pawnee-deal" class="emoji-image">
-                    <div class="emoji-name">:pawnee-deal:</div>
-                </div>
-                <div class="emoji-card" data-name="pawnee-thanks">
-                    <button class="remove-btn" onclick="toggleRemove('pawnee-thanks')">×</button>
-                    <img src="gifs/pawnee-thanks.gif" alt="pawnee-thanks" class="emoji-image">
-                    <div class="emoji-name">:pawnee-thanks:</div>
-                </div>
-                <div class="emoji-card" data-name="pawnee-excited">
-                    <button class="remove-btn" onclick="toggleRemove('pawnee-excited')">×</button>
-                    <img src="gifs/pawnee-excited.gif" alt="pawnee-excited" class="emoji-image">
-                    <div class="emoji-name">:pawnee-excited:</div>
-                </div>
-                <div class="emoji-card" data-name="pawnee-breakfast">
-                    <button class="remove-btn" onclick="toggleRemove('pawnee-breakfast')">×</button>
-                    <img src="gifs/pawnee-breakfast.gif" alt="pawnee-breakfast" class="emoji-image">
-                    <div class="emoji-name">:pawnee-breakfast:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">😇 The Good Place</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="tgp-eleanor">
-                    <button class="remove-btn" onclick="toggleRemove('tgp-eleanor')">×</button>
-                    <img src="gifs/tgp-eleanor.gif" alt="tgp-eleanor" class="emoji-image">
-                    <div class="emoji-name">:tgp-eleanor:</div>
-                </div>
-                <div class="emoji-card" data-name="tgp-holy-fork">
-                    <button class="remove-btn" onclick="toggleRemove('tgp-holy-fork')">×</button>
-                    <img src="gifs/tgp-holy-fork.gif" alt="tgp-holy-fork" class="emoji-image">
-                    <div class="emoji-name">:tgp-holy-fork:</div>
-                </div>
-                <div class="emoji-card" data-name="tgp-janet">
-                    <button class="remove-btn" onclick="toggleRemove('tgp-janet')">×</button>
-                    <img src="gifs/tgp-janet.gif" alt="tgp-janet" class="emoji-image">
-                    <div class="emoji-name">:tgp-janet:</div>
-                </div>
-                <div class="emoji-card" data-name="tgp-chidi">
-                    <button class="remove-btn" onclick="toggleRemove('tgp-chidi')">×</button>
-                    <img src="gifs/tgp-chidi.gif" alt="tgp-chidi" class="emoji-image">
-                    <div class="emoji-name">:tgp-chidi:</div>
-                </div>
-                <div class="emoji-card" data-name="tgp-frustrated">
-                    <button class="remove-btn" onclick="toggleRemove('tgp-frustrated')">×</button>
-                    <img src="gifs/tgp-frustrated.gif" alt="tgp-frustrated" class="emoji-image">
-                    <div class="emoji-name">:tgp-frustrated:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">🚔 Brooklyn 99</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="b99-interested">
-                    <button class="remove-btn" onclick="toggleRemove('b99-interested')">×</button>
-                    <img src="gifs/b99-interested.gif" alt="b99-interested" class="emoji-image">
-                    <div class="emoji-name">:b99-interested:</div>
-                </div>
-                <div class="emoji-card" data-name="b99-yes">
-                    <button class="remove-btn" onclick="toggleRemove('b99-yes')">×</button>
-                    <img src="gifs/b99-yes.gif" alt="b99-yes" class="emoji-image">
-                    <div class="emoji-name">:b99-yes:</div>
-                </div>
-                <div class="emoji-card" data-name="b99-dance">
-                    <button class="remove-btn" onclick="toggleRemove('b99-dance')">×</button>
-                    <img src="gifs/b99-dance.gif" alt="b99-dance" class="emoji-image">
-                    <div class="emoji-name">:b99-dance:</div>
-                </div>
-                <div class="emoji-card" data-name="b99-awkward">
-                    <button class="remove-btn" onclick="toggleRemove('b99-awkward')">×</button>
-                    <img src="gifs/b99-awkward.gif" alt="b99-awkward" class="emoji-image">
-                    <div class="emoji-name">:b99-awkward:</div>
-                </div>
-                <div class="emoji-card" data-name="b99-noice">
-                    <button class="remove-btn" onclick="toggleRemove('b99-noice')">×</button>
-                    <img src="gifs/b99-noice.gif" alt="b99-noice" class="emoji-image">
-                    <div class="emoji-name">:b99-noice:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💅 Mean Girls</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="mg-awkward">
-                    <button class="remove-btn" onclick="toggleRemove('mg-awkward')">×</button>
-                    <img src="gifs/mg-awkward.gif" alt="mg-awkward" class="emoji-image">
-                    <div class="emoji-name">:mg-awkward:</div>
-                </div>
-                <div class="emoji-card" data-name="mg-fetch">
-                    <button class="remove-btn" onclick="toggleRemove('mg-fetch')">×</button>
-                    <img src="gifs/mg-fetch.gif" alt="mg-fetch" class="emoji-image">
-                    <div class="emoji-name">:mg-fetch:</div>
-                </div>
-                <div class="emoji-card" data-name="mg-idk">
-                    <button class="remove-btn" onclick="toggleRemove('mg-idk')">×</button>
-                    <img src="gifs/mg-idk.gif" alt="mg-idk" class="emoji-image">
-                    <div class="emoji-name">:mg-idk:</div>
-                </div>
-                <div class="emoji-card" data-name="mg-obsessed">
-                    <button class="remove-btn" onclick="toggleRemove('mg-obsessed')">×</button>
-                    <img src="gifs/mg-obsessed.gif" alt="mg-obsessed" class="emoji-image">
-                    <div class="emoji-name">:mg-obsessed:</div>
-                </div>
-                <div class="emoji-card" data-name="mg-butter">
-                    <button class="remove-btn" onclick="toggleRemove('mg-butter')">×</button>
-                    <img src="gifs/mg-butter.gif" alt="mg-butter" class="emoji-image">
-                    <div class="emoji-name">:mg-butter:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💋 Clueless</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="clueless-thinking">
-                    <button class="remove-btn" onclick="toggleRemove('clueless-thinking')">×</button>
-                    <img src="gifs/clueless-thinking.gif" alt="clueless-thinking" class="emoji-image">
-                    <div class="emoji-name">:clueless-thinking:</div>
-                </div>
-                <div class="emoji-card" data-name="clueless-ugh">
-                    <button class="remove-btn" onclick="toggleRemove('clueless-ugh')">×</button>
-                    <img src="gifs/clueless-ugh.gif" alt="clueless-ugh" class="emoji-image">
-                    <div class="emoji-name">:clueless-ugh:</div>
-                </div>
-                <div class="emoji-card" data-name="clueless-asif">
-                    <button class="remove-btn" onclick="toggleRemove('clueless-asif')">×</button>
-                    <img src="gifs/clueless-asif.gif" alt="clueless-asif" class="emoji-image">
-                    <div class="emoji-name">:clueless-asif:</div>
-                </div>
-                <div class="emoji-card" data-name="clueless-whatever">
-                    <button class="remove-btn" onclick="toggleRemove('clueless-whatever')">×</button>
-                    <img src="gifs/clueless-whatever.gif" alt="clueless-whatever" class="emoji-image">
-                    <div class="emoji-name">:clueless-whatever:</div>
-                </div>
-                <div class="emoji-card" data-name="clueless-shopping">
-                    <button class="remove-btn" onclick="toggleRemove('clueless-shopping')">×</button>
-                    <img src="gifs/clueless-shopping.gif" alt="clueless-shopping" class="emoji-image">
-                    <div class="emoji-name">:clueless-shopping:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">💖 Legally Blonde</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="elle-hard">
-                    <button class="remove-btn" onclick="toggleRemove('elle-hard')">×</button>
-                    <img src="gifs/elle-hard.gif" alt="elle-hard" class="emoji-image">
-                    <div class="emoji-name">:elle-hard:</div>
-                </div>
-                <div class="emoji-card" data-name="elle-endorphins">
-                    <button class="remove-btn" onclick="toggleRemove('elle-endorphins')">×</button>
-                    <img src="gifs/elle-endorphins.gif" alt="elle-endorphins" class="emoji-image">
-                    <div class="emoji-name">:elle-endorphins:</div>
-                </div>
-                <div class="emoji-card" data-name="elle-snap">
-                    <button class="remove-btn" onclick="toggleRemove('elle-snap')">×</button>
-                    <img src="gifs/elle-snap.gif" alt="elle-snap" class="emoji-image">
-                    <div class="emoji-name">:elle-snap:</div>
-                </div>
-                <div class="emoji-card" data-name="elle-wave">
-                    <button class="remove-btn" onclick="toggleRemove('elle-wave')">×</button>
-                    <img src="gifs/elle-wave.gif" alt="elle-wave" class="emoji-image">
-                    <div class="emoji-name">:elle-wave:</div>
-                </div>
-                <div class="emoji-card" data-name="elle-happy">
-                    <button class="remove-btn" onclick="toggleRemove('elle-happy')">×</button>
-                    <img src="gifs/elle-happy.gif" alt="elle-happy" class="emoji-image">
-                    <div class="emoji-name">:elle-happy:</div>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <h2 class="category-title">👠 Devil Wears Prada</h2>
-            <div class="emoji-grid">
-                <div class="emoji-card" data-name="miranda-look">
-                    <button class="remove-btn" onclick="toggleRemove('miranda-look')">×</button>
-                    <img src="gifs/miranda-look.gif" alt="miranda-look" class="emoji-image">
-                    <div class="emoji-name">:miranda-look:</div>
-                </div>
-                <div class="emoji-card" data-name="miranda-ready">
-                    <button class="remove-btn" onclick="toggleRemove('miranda-ready')">×</button>
-                    <img src="gifs/miranda-ready.gif" alt="miranda-ready" class="emoji-image">
-                    <div class="emoji-name">:miranda-ready:</div>
-                </div>
-                <div class="emoji-card" data-name="miranda-disappoint">
-                    <button class="remove-btn" onclick="toggleRemove('miranda-disappoint')">×</button>
-                    <img src="gifs/miranda-disappoint.gif" alt="miranda-disappoint" class="emoji-image">
-                    <div class="emoji-name">:miranda-disappoint:</div>
-                </div>
-                <div class="emoji-card" data-name="miranda-shades">
-                    <button class="remove-btn" onclick="toggleRemove('miranda-shades')">×</button>
-                    <img src="gifs/miranda-shades.gif" alt="miranda-shades" class="emoji-image">
-                    <div class="emoji-name">:miranda-shades:</div>
-                </div>
-                <div class="emoji-card" data-name="miranda-thatsall">
-                    <button class="remove-btn" onclick="toggleRemove('miranda-thatsall')">×</button>
-                    <img src="gifs/miranda-thatsall.gif" alt="miranda-thatsall" class="emoji-image">
-                    <div class="emoji-name">:miranda-thatsall:</div>
+            
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-value" id="totalCount">117</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="visibleCount">117</span>
+                    <span class="stat-label">Showing</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="selectedCount">0</span>
+                    <span class="stat-label">Selected</span>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Tag Cloud -->
+    <div class="tag-cloud">
+        <div class="tag-cloud-content">
+            <h2>Filter by Tags</h2>
+            <div class="tags" id="tagCloud"></div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="emoji-grid" id="emojiGrid"></div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-title">No emojis found</div>
+            <div class="empty-state-text">Try adjusting your search or filters</div>
+        </div>
+    </div>
+    
+    <!-- Action Bar -->
     <div class="action-bar">
-        <button class="action-btn primary" onclick="copyChanges()">
-            📋 Copy Changes <span class="count" id="changesCount">0</span>
+        <button class="action-btn secondary" id="selectAllBtn">
+            Select All <span class="count" id="selectAllCount">0</span>
+        </button>
+        <button class="action-btn primary" id="downloadBtn">
+            📥 Download <span class="count" id="downloadCount">0</span>
         </button>
     </div>
     
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
-    
-    <script>
-        let removedGifs = new Set();
-        
-        function toggleRemove(name) {
-            event.stopPropagation();
-            const card = document.querySelector(`[data-name="${name}"]`);
-            const btn = card.querySelector('.remove-btn');
-            
-            if (removedGifs.has(name)) {
-                removedGifs.delete(name);
-                card.classList.remove('removed');
-                btn.textContent = '×';
-            } else {
-                removedGifs.add(name);
-                card.classList.add('removed');
-                btn.textContent = '✓';
-            }
-            
-            updateStats();
-        }
-        
-        function updateStats() {
-            const total = 117;
-            const removed = removedGifs.size;
-            const active = total - removed;
-            
-            document.getElementById('activeCount').textContent = active;
-            document.getElementById('removedCount').textContent = removed;
-            document.getElementById('changesCount').textContent = removed;
-        }
-        
-        function copyChanges() {
-            if (removedGifs.size === 0) {
-                showToast('No changes to copy');
-                return;
-            }
-            
-            const removed = Array.from(removedGifs).sort();
-            const text = `Removed GIFs (${removed.length}):
-${removed.join('
-')}`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(`Copied ${removed.length} removed GIFs to clipboard!`);
-            });
-        }
-        
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-    </script>
-</body>
-</html>
