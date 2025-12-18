@@ -470,3 +470,306 @@
     
     <!-- Toast -->
     <div class="toast" id="toast"></div>
+    
+    <script>
+        // State
+        let emojis = [];
+        let allTags = new Set();
+        let activeTags = new Set();
+        let selectedEmojis = new Set();
+        let searchQuery = '';
+        
+        // DOM Elements
+        const emojiGrid = document.getElementById('emojiGrid');
+        const tagCloud = document.getElementById('tagCloud');
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        const emptyState = document.getElementById('emptyState');
+        const totalCount = document.getElementById('totalCount');
+        const visibleCount = document.getElementById('visibleCount');
+        const selectedCount = document.getElementById('selectedCount');
+        const selectAllBtn = document.getElementById('selectAllBtn');
+        const selectAllCount = document.getElementById('selectAllCount');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloadCount = document.getElementById('downloadCount');
+        const toast = document.getElementById('toast');
+        
+        // Load emoji data
+        async function loadEmojis() {
+            try {
+                const response = await fetch('emojis.json');
+                emojis = await response.json();
+                
+                // Extract all unique tags
+                emojis.forEach(emoji => {
+                    if (emoji.tags) {
+                        emoji.tags.split(',').forEach(tag => {
+                            allTags.add(tag.trim());
+                        });
+                    }
+                });
+                
+                totalCount.textContent = emojis.length;
+                renderTagCloud();
+                renderEmojis();
+            } catch (error) {
+                console.error('Failed to load emojis:', error);
+                showToast('Failed to load emojis');
+            }
+        }
+        
+        // Render tag cloud
+        function renderTagCloud() {
+            const tagCounts = {};
+            
+            // Count occurrences of each tag
+            emojis.forEach(emoji => {
+                if (emoji.tags) {
+                    emoji.tags.split(',').forEach(tag => {
+                        const trimmedTag = tag.trim();
+                        tagCounts[trimmedTag] = (tagCounts[trimmedTag] || 0) + 1;
+                    });
+                }
+            });
+            
+            // Sort tags by count (descending)
+            const sortedTags = Object.entries(tagCounts)
+                .sort((a, b) => b[1] - a[1])
+                .map(([tag, count]) => ({ tag, count }));
+            
+            tagCloud.innerHTML = sortedTags.map(({ tag, count }) => `
+                <div class="tag" data-tag="${tag}">
+                    ${tag}
+                    <span class="tag-count">(${count})</span>
+                </div>
+            `).join('');
+            
+            // Add click handlers
+            tagCloud.querySelectorAll('.tag').forEach(tagEl => {
+                tagEl.addEventListener('click', () => toggleTag(tagEl.dataset.tag, tagEl));
+            });
+        }
+        
+        // Toggle tag filter
+        function toggleTag(tag, element) {
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                element.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                element.classList.add('active');
+            }
+            renderEmojis();
+        }
+        
+        // Filter emojis based on search and tags
+        function filterEmojis() {
+            return emojis.filter(emoji => {
+                // Search filter
+                if (searchQuery) {
+                    const query = searchQuery.toLowerCase();
+                    const matchesName = emoji.name.toLowerCase().includes(query);
+                    const matchesTags = emoji.tags?.toLowerCase().includes(query);
+                    const matchesDescription = emoji.description?.toLowerCase().includes(query);
+                    const matchesFilename = emoji.filename.toLowerCase().includes(query);
+                    
+                    if (!matchesName && !matchesTags && !matchesDescription && !matchesFilename) {
+                        return false;
+                    }
+                }
+                
+                // Tag filter (OR logic - match any active tag)
+                if (activeTags.size > 0) {
+                    const emojiTags = emoji.tags ? emoji.tags.split(',').map(t => t.trim()) : [];
+                    const hasMatchingTag = Array.from(activeTags).some(activeTag => 
+                        emojiTags.includes(activeTag)
+                    );
+                    if (!hasMatchingTag) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            });
+        }
+        
+        // Render emoji grid
+        function renderEmojis() {
+            const filtered = filterEmojis();
+            
+            if (filtered.length === 0) {
+                emojiGrid.style.display = 'none';
+                emptyState.style.display = 'block';
+            } else {
+                emojiGrid.style.display = 'grid';
+                emptyState.style.display = 'none';
+                
+                emojiGrid.innerHTML = filtered.map(emoji => {
+                    const isSelected = selectedEmojis.has(emoji.filename);
+                    return `
+                        <div class="emoji-card ${isSelected ? 'selected' : ''}" data-filename="${emoji.filename}">
+                            <img src="gifs/${emoji.filename}" alt="${emoji.name}" class="emoji-image" loading="lazy">
+                            <div class="emoji-name">:${emoji.filename.replace('.gif', '')}:</div>
+                            <div class="emoji-tags">${emoji.tags}</div>
+                            <div class="emoji-size">${Math.round(emoji.size_kb)}KB</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Add click handlers
+                emojiGrid.querySelectorAll('.emoji-card').forEach(card => {
+                    card.addEventListener('click', () => toggleSelection(card.dataset.filename, card));
+                });
+            }
+            
+            visibleCount.textContent = filtered.length;
+            selectAllCount.textContent = filtered.length;
+            updateSelectedCount();
+        }
+        
+        // Toggle emoji selection
+        function toggleSelection(filename, element) {
+            if (selectedEmojis.has(filename)) {
+                selectedEmojis.delete(filename);
+                element.classList.remove('selected');
+            } else {
+                selectedEmojis.add(filename);
+                element.classList.add('selected');
+            }
+            updateSelectedCount();
+        }
+        
+        // Update selected count display
+        function updateSelectedCount() {
+            const count = selectedEmojis.size;
+            selectedCount.textContent = count;
+            downloadCount.textContent = count;
+        }
+        
+        // Select all visible emojis
+        function selectAllVisible() {
+            const filtered = filterEmojis();
+            
+            if (selectedEmojis.size === filtered.length) {
+                // Deselect all
+                selectedEmojis.clear();
+                showToast('Deselected all emojis');
+            } else {
+                // Select all visible
+                filtered.forEach(emoji => selectedEmojis.add(emoji.filename));
+                showToast(`Selected ${filtered.length} emojis`);
+            }
+            
+            renderEmojis();
+        }
+        
+        // Clear all filters
+        function clearAllFilters() {
+            searchQuery = '';
+            searchInput.value = '';
+            activeTags.clear();
+            
+            // Remove active class from all tags
+            tagCloud.querySelectorAll('.tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            
+            renderEmojis();
+            showToast('Filters cleared');
+        }
+        
+        // Copy emoji name to clipboard
+        function copyEmojiName(filename) {
+            const name = ':' + filename.replace('.gif', '') + ':';
+            navigator.clipboard.writeText(name).then(() => {
+                showToast(`Copied ${name} to clipboard!`);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+        
+        // Download selected emojis
+        function downloadSelected() {
+            if (selectedEmojis.size === 0) {
+                showToast('No emojis selected');
+                return;
+            }
+            
+            // Create a text file with the list of selected emojis
+            const emojiList = Array.from(selectedEmojis)
+                .map(filename => ':' + filename.replace('.gif', '') + ':')
+                .sort()
+                .join('\n');
+            
+            const blob = new Blob([
+                `Slack Emoji Pack - Selected Emojis (${selectedEmojis.size})\n\n`,
+                'Copy and paste these emoji codes into Slack:\n\n',
+                emojiList,
+                '\n\n---\n\n',
+                'Download individual GIFs from:\n',
+                'https://github.com/matthew-gerstman/slack-emoji-pack/tree/main/gifs\n\n',
+                'Selected files:\n',
+                Array.from(selectedEmojis).sort().join('\n')
+            ].join(''), { type: 'text/plain' });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `slack-emoji-pack-${selectedEmojis.size}-emojis.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast(`Downloaded list of ${selectedEmojis.size} emojis`);
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Event Listeners
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderEmojis();
+        });
+        
+        clearBtn.addEventListener('click', clearAllFilters);
+        selectAllBtn.addEventListener('click', selectAllVisible);
+        downloadBtn.addEventListener('click', downloadSelected);
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + A to select all
+            if ((e.ctrlKey || e.metaKey) && e.key === 'a' && !e.target.matches('input')) {
+                e.preventDefault();
+                selectAllVisible();
+            }
+            
+            // Escape to clear search
+            if (e.key === 'Escape') {
+                if (searchInput.value) {
+                    searchInput.value = '';
+                    searchQuery = '';
+                    renderEmojis();
+                    searchInput.blur();
+                }
+            }
+            
+            // / to focus search
+            if (e.key === '/' && !e.target.matches('input')) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+        
+        // Initialize
+        loadEmojis();
+    </script>
+</body>
+</html>
