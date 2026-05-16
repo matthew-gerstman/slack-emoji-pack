@@ -7,6 +7,8 @@ const MARQUEE_TEXT =
   String(TOTAL_EMOJI_COUNT) +
   " Custom Emojis ~*~ Best Viewed at 800x600 ~*~ Welcome to My Page ~*~";
 
+const MARQUEE_SEPARATOR = "\u00A0\u00A0\u00A0\u00A0\u00A0";
+
 export function Header(): React.ReactElement {
   return (
     <header className="retro-header">
@@ -14,7 +16,7 @@ export function Header(): React.ReactElement {
       <div className="marquee-banner bevel-raised">
         <div className="marquee-container">
           <span className="marquee-text glow-pink" aria-live="off">
-            {MARQUEE_TEXT}
+            {MARQUEE_TEXT}{MARQUEE_SEPARATOR}{MARQUEE_TEXT}{MARQUEE_SEPARATOR}
           </span>
         </div>
       </div>

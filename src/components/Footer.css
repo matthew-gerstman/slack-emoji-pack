@@ -33,12 +33,12 @@
 }
 
 .footer-link {
-  color: #00ffff !important;
+  color: #00ffff;
   text-decoration: underline;
 }
 
 .footer-link:hover {
-  color: #ff00ff !important;
+  color: #ff00ff;
 }
 
 .footer-link-separator {

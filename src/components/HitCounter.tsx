@@ -5,7 +5,7 @@ const VISITOR_NUMBER = "000001337";
 
 function renderDigits(value: string): React.ReactElement[] {
   return value.split("").map((digit, index) => (
-    <span key={index} className="odometer-digit">
+    <span key={`digit-${index}`} className="odometer-digit">
       {digit}
     </span>
   ));
