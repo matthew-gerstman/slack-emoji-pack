@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type React from "react";
 import type { Emoji } from "../types";
 import "./EmojiCard.css";
 
@@ -19,15 +20,27 @@ async function copyToClipboard(text: string): Promise<boolean> {
   }
 }
 
-export function EmojiCard({ emoji }: EmojiCardProps): JSX.Element {
+export function EmojiCard({ emoji }: EmojiCardProps): React.ReactElement {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return (): void => {
+      if (timerRef.current !== null) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   const handleCopy = useCallback((): void => {
     const slackName = formatSlackName(emoji.name);
     void copyToClipboard(slackName).then((success) => {
       if (success) {
+        if (timerRef.current !== null) {
+          clearTimeout(timerRef.current);
+        }
         setCopied(true);
-        setTimeout(() => {
+        timerRef.current = setTimeout(() => {
           setCopied(false);
         }, 1500);
       }
@@ -35,7 +48,12 @@ export function EmojiCard({ emoji }: EmojiCardProps): JSX.Element {
   }, [emoji.name]);
 
   return (
-    <div className="emoji-card" onClick={handleCopy} title={`Click to copy ${formatSlackName(emoji.name)}`}>
+    <button
+      className="emoji-card"
+      onClick={handleCopy}
+      aria-label={`Copy ${formatSlackName(emoji.name)} to clipboard`}
+      type="button"
+    >
       <div className="emoji-image-container">
         <img
           src={`${import.meta.env.BASE_URL}gifs/${emoji.filename}`}
@@ -47,7 +65,7 @@ export function EmojiCard({ emoji }: EmojiCardProps): JSX.Element {
       <div className="emoji-name">
         {copied ? "Copied!" : formatSlackName(emoji.name)}
       </div>
-    </div>
+    </button>
   );
 }
 

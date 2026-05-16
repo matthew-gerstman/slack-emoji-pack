@@ -1,3 +1,4 @@
+import type React from "react";
 import type { ChangeEvent } from "react";
 import "./SearchBar.css";
 
@@ -18,7 +19,7 @@ export function SearchBar({
   query,
   onQueryChange,
   resultCount,
-}: SearchBarProps): JSX.Element {
+}: SearchBarProps): React.ReactElement {
   return (
     <div className="search-bar">
       <input

@@ -1,3 +1,5 @@
+import type React from "react";
+import type { Category } from "../types";
 import { categories, TOTAL_EMOJI_COUNT } from "../data/emojis";
 import { useEmojiFilter } from "../hooks/useEmojiFilter";
 import { CategorySection } from "./CategorySection";
@@ -5,7 +7,7 @@ import { SearchBar } from "./SearchBar";
 import "./App.css";
 
 function countFilteredEmojis(
-  filteredCategories: readonly { readonly emojis: readonly unknown[] }[]
+  filteredCategories: readonly Category[]
 ): number {
   return filteredCategories.reduce(
     (sum, cat) => sum + cat.emojis.length,
@@ -13,7 +15,7 @@ function countFilteredEmojis(
   );
 }
 
-export function App(): JSX.Element {
+export function App(): React.ReactElement {
   const { query, setQuery, filteredCategories } = useEmojiFilter(categories);
   const resultCount = countFilteredEmojis(filteredCategories);
 

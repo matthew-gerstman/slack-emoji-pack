@@ -1,7 +1,6 @@
 export interface Emoji {
   readonly name: string;
   readonly filename: string;
-  readonly category: string;
   readonly reactionType: string;
   readonly useCase: string;
 }

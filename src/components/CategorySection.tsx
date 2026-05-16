@@ -1,3 +1,4 @@
+import type React from "react";
 import type { Category } from "../types";
 import { EmojiCard } from "./EmojiCard";
 import "./CategorySection.css";
@@ -8,7 +9,7 @@ interface CategorySectionProps {
 
 export function CategorySection({
   category,
-}: CategorySectionProps): JSX.Element {
+}: CategorySectionProps): React.ReactElement {
   return (
     <section className="category-section">
       <h2 className="category-header">
