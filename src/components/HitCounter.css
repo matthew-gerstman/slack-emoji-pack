@@ -1,0 +1,36 @@
+.hit-counter-bar {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #0a0a2a;
+}
+
+.hit-counter-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-retro);
+  font-size: 0.9rem;
+  color: var(--color-neon-green);
+}
+
+.hit-counter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hit-counter-digits {
+  display: inline-flex;
+}
+
+.hit-counter-separator {
+  color: var(--color-neon-yellow);
+  font-weight: bold;
+}
+
+.hit-counter-date {
+  color: var(--color-neon-blue);
+}
+
