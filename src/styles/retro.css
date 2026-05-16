@@ -1,0 +1,158 @@
+/* ══════════════════════════════════════════════
+   RETRO 90s UTILITY CLASSES
+   ══════════════════════════════════════════════ */
+
+/* ── Beveled panel (raised) ── */
+.bevel-raised {
+  border-width: 3px;
+  border-style: outset;
+  border-color: var(--color-bevel-light);
+  background-color: var(--color-surface);
+}
+
+/* ── Beveled panel (sunken / inset) ── */
+.bevel-inset {
+  border-width: 3px;
+  border-style: inset;
+  border-color: var(--color-bevel-light);
+  background-color: var(--color-surface);
+}
+
+/* ── Neon text glow classes ── */
+.glow-pink {
+  color: var(--color-neon-pink);
+  text-shadow: var(--glow-pink);
+}
+
+.glow-blue {
+  color: var(--color-neon-blue);
+  text-shadow: var(--glow-blue);
+}
+
+.glow-green {
+  color: var(--color-neon-green);
+  text-shadow: var(--glow-green);
+}
+
+.glow-yellow {
+  color: var(--color-neon-yellow);
+  text-shadow: var(--glow-yellow);
+}
+
+/* ── Marquee animation ── */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marquee-text {
+  display: inline-block;
+  animation: marquee-scroll 15s linear infinite;
+}
+
+/* ── Rainbow animated divider ── */
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-divider {
+  height: 4px;
+  border: none;
+  margin: 1.5rem 0;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7700,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #8b00ff,
+    #ff0000
+  );
+  background-size: 300% 100%;
+  animation: rainbow-shift 3s ease infinite;
+}
+
+/* ── Blink animation (90s essential) ── */
+@keyframes retro-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.blink {
+  animation: retro-blink 1s step-end infinite;
+}
+
+/* ── Construction stripe pattern ── */
+@keyframes stripe-march {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+.construction-stripe {
+  height: 12px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffcc00,
+    #ffcc00 10px,
+    #000000 10px,
+    #000000 20px
+  );
+  background-size: 40px 40px;
+  animation: stripe-march 1s linear infinite;
+}
+
+/* ── Odometer digit style ── */
+.odometer-digit {
+  display: inline-block;
+  width: 1.2em;
+  text-align: center;
+  background: #000000;
+  color: var(--color-neon-green);
+  border: 2px inset var(--color-bevel-light);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  padding: 2px 0;
+  margin: 0 1px;
+}
+
+/* ── Netscape-era badge styling ── */
+.retro-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 2px outset var(--color-bevel-light);
+  background-color: var(--color-bevel-face);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* ── Reduced motion accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-text,
+  .animated-divider,
+  .construction-stripe,
+  .blink {
+    animation: none;
+  }
+
+  .sparkle {
+    animation: none;
+  }
+}
+
