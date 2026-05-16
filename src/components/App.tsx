@@ -1,9 +1,13 @@
 import type React from "react";
 import type { Category } from "../types";
-import { categories, TOTAL_EMOJI_COUNT } from "../data/emojis";
+import { categories } from "../data/emojis";
 import { useEmojiFilter } from "../hooks/useEmojiFilter";
-import { CategorySection } from "./CategorySection";
+import { Header } from "./Header";
+import { HitCounter } from "./HitCounter";
 import { SearchBar } from "./SearchBar";
+import { CategorySection } from "./CategorySection";
+import { Footer } from "./Footer";
+import { CursorSparkles } from "./CursorSparkles";
 import "./App.css";
 
 function countFilteredEmojis(
@@ -21,12 +25,9 @@ export function App(): React.ReactElement {
 
   return (
     <div className="app">
-      <header className="app-header">
-        <h1 className="app-title">Slack Emoji Pack</h1>
-        <p className="app-subtitle">
-          {TOTAL_EMOJI_COUNT} custom emojis across {categories.length} categories
-        </p>
-      </header>
+      <CursorSparkles />
+      <Header />
+      <HitCounter />
       <main className="app-main">
         <SearchBar
           query={query}
@@ -34,18 +35,22 @@ export function App(): React.ReactElement {
           resultCount={resultCount}
         />
         {filteredCategories.length === 0 ? (
-          <div className="no-results">
-            No emojis found matching &ldquo;{query}&rdquo;
+          <div className="no-results bevel-inset">
+            <span className="glow-pink">
+              No emojis found matching &ldquo;{query}&rdquo;
+            </span>
           </div>
         ) : (
-          filteredCategories.map((category) => (
-            <CategorySection key={category.name} category={category} />
+          filteredCategories.map((category, index) => (
+            <CategorySection
+              key={category.name}
+              category={category}
+              colorIndex={index}
+            />
           ))
         )}
       </main>
-      <footer className="app-footer">
-        <p>Click any emoji to copy its Slack name to clipboard</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
