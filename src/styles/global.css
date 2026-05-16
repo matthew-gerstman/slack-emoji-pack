@@ -57,9 +57,25 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   min-height: 100vh;
-  background-image: url('/slack-emoji-pack/assets/stars-tile.svg');
-  background-repeat: repeat;
+  background-image:
+    radial-gradient(1px 1px at 15px 23px, #ffffff 100%, transparent),
+    radial-gradient(1.2px 1.2px at 78px 45px, #ffffff 100%, transparent),
+    radial-gradient(0.7px 0.7px at 120px 18px, #aaccff 100%, transparent),
+    radial-gradient(1px 1px at 155px 52px, #ffffff 100%, transparent),
+    radial-gradient(0.8px 0.8px at 30px 72px, #ffddaa 100%, transparent),
+    radial-gradient(1px 1px at 65px 95px, #ffffff 100%, transparent),
+    radial-gradient(1.3px 1.3px at 140px 88px, #aaddff 100%, transparent),
+    radial-gradient(1px 1px at 8px 110px, #ffffff 100%, transparent),
+    radial-gradient(1.1px 1.1px at 88px 145px, #ffffff 100%, transparent),
+    radial-gradient(0.8px 0.8px at 160px 135px, #ffffff 100%, transparent),
+    radial-gradient(1px 1px at 192px 115px, #ffffff 100%, transparent),
+    radial-gradient(1.2px 1.2px at 58px 180px, #ffffff 100%, transparent),
+    radial-gradient(0.9px 0.9px at 130px 190px, #ffffff 100%, transparent),
+    radial-gradient(1px 1px at 170px 175px, #ffffff 100%, transparent),
+    radial-gradient(1.5px 1.5px at 70px 35px, #ffffff 100%, transparent),
+    radial-gradient(1.5px 1.5px at 150px 150px, #ffffff 100%, transparent);
   background-size: 200px 200px;
+  background-repeat: repeat;
   cursor: crosshair;
 }
 

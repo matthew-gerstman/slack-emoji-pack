@@ -7,7 +7,7 @@ const SPARKLE_LIFETIME_MS = 600;
 const THROTTLE_MS = 50;
 
 function pickRandomColor(): string {
-  return SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)];
+  return SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)] ?? "#ff00ff";
 }
 
 function createSparkleElement(x: number, y: number): HTMLSpanElement {

@@ -17,7 +17,7 @@ const NEON_CLASSES = [
 ] as const;
 
 function getNeonClass(index: number): string {
-  return NEON_CLASSES[index % NEON_CLASSES.length];
+  return NEON_CLASSES[index % NEON_CLASSES.length] ?? "glow-pink";
 }
 
 export function CategorySection({
