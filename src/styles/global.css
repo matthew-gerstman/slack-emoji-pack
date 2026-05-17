@@ -13,17 +13,17 @@
   --color-surface-hover: #2a1040;
   --color-text: #e0e0e0;
   --color-text-muted: #a0a0c0;
-  --color-accent: #00ffff;
-  --color-accent-hover: #00cccc;
+  --color-accent: #7bbcbc;
+  --color-accent-hover: #5a9898;
   --color-border: #404060;
-  --color-success: #00ff00;
+  --color-success: #77bb77;
 
-  --color-neon-pink: #ff00ff;
-  --color-neon-blue: #00ffff;
-  --color-neon-green: #39ff14;
-  --color-neon-yellow: #ffd700;
-  --color-neon-orange: #ff6600;
-  --color-neon-red: #ff0040;
+  --color-neon-pink: #cc77cc;
+  --color-neon-blue: #7bbcbc;
+  --color-neon-green: #7bc47b;
+  --color-neon-yellow: #ccaa55;
+  --color-neon-orange: #cc7733;
+  --color-neon-red: #cc4466;
 
   --color-bevel-light: #c0c0c0;
   --color-bevel-dark: #404040;
@@ -40,10 +40,10 @@
   --radius-lg: 0px;
 
   /* ── Glow effects ── */
-  --glow-pink: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
-  --glow-blue: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
-  --glow-green: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
-  --glow-yellow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+  --glow-pink: 0 0 4px #cc77cc, 0 0 8px #cc77cc;
+  --glow-blue: 0 0 4px #7bbcbc, 0 0 8px #7bbcbc;
+  --glow-green: 0 0 4px #7bc47b, 0 0 8px #7bc47b;
+  --glow-yellow: 0 0 4px #ccaa55, 0 0 8px #ccaa55;
 }
 
 html {
@@ -94,11 +94,11 @@ a:visited {
 }
 
 a:hover {
-  color: #ff0000;
+  color: #cc4444;
 }
 
 a:active {
-  color: #ff6600;
+  color: #cc7733;
 }
 
 /* ── Selection styling ── */
