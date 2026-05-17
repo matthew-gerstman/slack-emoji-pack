@@ -58,6 +58,6 @@
 
 .emoji-card:hover .emoji-name {
   color: var(--color-neon-pink);
-  text-shadow: 0 0 6px rgba(255, 0, 255, 0.5);
+  text-shadow: 0 0 4px rgba(204, 119, 204, 0.4);
 }
 

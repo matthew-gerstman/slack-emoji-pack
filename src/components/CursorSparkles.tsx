@@ -2,13 +2,13 @@ import { useEffect, useRef, useCallback } from "react";
 import type React from "react";
 import "./CursorSparkles.css";
 
-const SPARKLE_COLORS = ["#ff00ff", "#00ffff", "#39ff14", "#ffd700", "#ff0040"];
+const SPARKLE_COLORS = ["#cc77cc", "#7bbcbc", "#7bc47b", "#ccaa55", "#cc4466"];
 const SPARKLE_LIFETIME_MS = 600;
 const THROTTLE_MS = 50;
 const MAX_SPARKLES = 30;
 
 function pickRandomColor(): string {
-  return SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)] ?? "#ff00ff";
+  return SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)] ?? "#cc77cc";
 }
 
 function createSparkleElement(x: number, y: number): HTMLSpanElement {

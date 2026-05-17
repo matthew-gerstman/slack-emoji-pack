@@ -73,13 +73,13 @@
   margin: 1.5rem 0;
   background: linear-gradient(
     90deg,
-    #ff0000,
-    #ff7700,
-    #ffff00,
-    #00ff00,
-    #0000ff,
-    #8b00ff,
-    #ff0000
+    #cc5555,
+    #cc7733,
+    #ccaa55,
+    #7bc47b,
+    #5577bb,
+    #7755aa,
+    #cc5555
   );
   background-size: 300% 100%;
   animation: rainbow-shift 3s ease infinite;
@@ -105,8 +105,8 @@
   height: 12px;
   background: repeating-linear-gradient(
     -45deg,
-    #ffcc00,
-    #ffcc00 10px,
+    #ccaa55,
+    #ccaa55 10px,
     #000000 10px,
     #000000 20px
   );
@@ -120,7 +120,7 @@
   width: 1.2em;
   text-align: center;
   background: #000000;
-  color: var(--color-neon-green);
+  color: var(--color-neon-green); /* muted via CSS variable */
   border: 2px inset var(--color-bevel-light);
   font-family: var(--font-mono);
   font-size: 1.2rem;
